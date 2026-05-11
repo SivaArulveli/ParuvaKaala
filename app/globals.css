@@ -4,36 +4,38 @@
 
 @layer base {
   :root {
-    --background: 140 30% 98%;
-    --foreground: 140 50% 10%;
+    --background: 140 15% 95%;
+    --foreground: 140 40% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 140 50% 10%;
-    --primary: 142 70% 35%;
+    --card-foreground: 140 40% 10%;
+    --primary: 142 60% 40%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 45 93% 47%;
-    --secondary-foreground: 140 50% 10%;
-    --accent: 25 95% 53%;
+    --secondary: 40 90% 50%;
+    --secondary-foreground: 140 40% 10%;
+    --accent: 25 90% 55%;
     --accent-foreground: 0 0% 100%;
-    --radius: 0.75rem;
+    --radius: 1.5rem;
+    --border: 140 10% 85%;
   }
 
   .dark {
-    --background: 140 50% 5%;
-    --foreground: 140 30% 98%;
-    --card: 140 40% 10%;
-    --card-foreground: 140 30% 98%;
+    --background: 160 35% 4%;
+    --foreground: 150 15% 95%;
+    --card: 160 30% 7%;
+    --card-foreground: 150 15% 95%;
     --primary: 142 70% 45%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 45 93% 55%;
-    --secondary-foreground: 140 50% 5%;
-    --accent: 25 95% 60%;
-    --accent-foreground: 140 50% 5%;
+    --primary-foreground: 160 35% 4%;
+    --secondary: 40 90% 55%;
+    --secondary-foreground: 160 35% 4%;
+    --accent: 25 90% 60%;
+    --accent-foreground: 160 35% 4%;
+    --border: 160 20% 12%;
   }
 }
 
 @layer base {
   * {
-    @apply border-[hsl(var(--card))];
+    @apply border-border;
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
