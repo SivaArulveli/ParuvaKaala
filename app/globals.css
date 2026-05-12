@@ -41,3 +41,24 @@
     @apply bg-background text-foreground font-sans antialiased;
   }
 }
+
+@layer utilities {
+  .glass {
+    @apply bg-white/20 backdrop-blur-md border border-white/30 shadow-xl;
+  }
+  
+  .glass-morphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  }
+  
+  .bento-grid {
+    @apply grid gap-6 p-6;
+  }
+  
+  .bento-card {
+    @apply bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+}

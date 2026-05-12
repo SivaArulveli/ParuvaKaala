@@ -1,90 +1,94 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Moon, Sun, Sparkles, Navigation, BookOpen } from 'lucide-react';
-import Image from 'next/image';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Moon, Sun, ChevronDown, Circle } from 'lucide-react';
+import { PlanWeek } from '@/lib/types';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-export default function CelestialGuide() {
+interface CelestialGuideProps {
+  plan: PlanWeek[];
+  language: 'en' | 'ta';
+}
+
+export default function CelestialGuide({ plan, language }: CelestialGuideProps) {
+  const [expanded, setExpanded] = useState(false);
+
+  if (!plan.length) return null;
+  
+  const currentWeek = plan[0].panchangam;
+
   return (
-    <div className="relative rounded-[2.5rem] overflow-hidden mt-12 group border border-white/10 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.5)]">
-      {/* Immersive Celestial Background */}
-      <div className="absolute inset-0 z-0">
-        <Image 
-          src="/celestial_banner.png" 
-          alt="Celestial Guide" 
-          fill 
-          className="object-cover scale-105 transition-transform duration-[20s] group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/90 to-background/40" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-secondary/10 via-transparent to-transparent mix-blend-overlay" />
-      </div>
-      
-      <div className="relative z-10 p-8 sm:p-14">
-        {/* Header */}
-        <div className="max-w-2xl mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20 text-secondary font-medium text-sm mb-6 backdrop-blur-md">
-            <Sparkles size={16} /> Surya Siddhanta
+    <Card className="bg-gradient-to-br from-amber-50 to-orange-50 shadow-lg border-amber-100">
+      <CardHeader>
+        <CardTitle className="text-xl font-semibold text-gray-800 flex items-center gap-2">
+          <Moon className="text-amber-600" size={24} />
+          {language === 'en' ? 'Surya Siddhanta Guide' : 'சூர்ய சித்தாந்தம்'}
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Tithi Section */}
+          <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 shadow-sm border border-white">
+            <p className="text-sm text-gray-600 mb-1">{language === 'en' ? 'Current Tithi' : 'தற்போதைய திதி'}</p>
+            <p className="text-lg font-bold text-gray-800">{currentWeek.tithi}</p>
+            <div className="flex items-center gap-2 mt-2">
+              <Circle className="text-amber-500 fill-amber-100" size={16} />
+              <span className="text-xs text-gray-500 font-medium uppercase tracking-wider">
+                {language === 'en' ? 'Waxing Phase' : 'வளர்பிறை'}
+              </span>
+            </div>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-black text-foreground tracking-tight mb-4 drop-shadow-lg">
-            Celestial Observatory Guide
-          </h2>
-          <p className="text-foreground/80 text-lg leading-relaxed font-light">
-            ParuvaKaala translates the profound mathematics of ancient observational astronomy into actionable agricultural intelligence.
-          </p>
+          
+          {/* Nakshatra Section */}
+          <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 shadow-sm border border-white">
+            <p className="text-sm text-gray-600 mb-1">{language === 'en' ? 'Nakshatra' : 'நட்சத்திரம்'}</p>
+            <p className="text-lg font-bold text-gray-800">{currentWeek.nakshatra}</p>
+            <p className="text-xs text-gray-500 font-medium uppercase tracking-wider mt-2">
+              {language === 'en' ? 'Auspicious Alignment' : 'நல்ல நாள்'}
+            </p>
+          </div>
+          
+          {/* Solar Transit */}
+          <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 md:col-span-2 shadow-sm border border-white">
+            <p className="text-sm text-gray-600 mb-2 flex items-center gap-2">
+              <Sun size={16} className="text-amber-500" />
+              {language === 'en' ? 'Solar Transit (Rasi)' : 'சூரிய சஞ்சாரம் (ராசி)'}
+            </p>
+            <p className="text-base text-gray-800 font-medium">
+              {language === 'en' 
+                ? 'The sun is currently transiting through a favorable house for agricultural yields according to the ancient Surya Siddhanta calculations.' 
+                : 'பண்டைய சூர்ய சித்தாந்த கணக்கீடுகளின்படி விவசாய விளைச்சலுக்கு சாதகமான வீட்டில் சூரியன் தற்போது சஞ்சரிக்கிறார்.'}
+            </p>
+          </div>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Lunar Movements */}
-          <motion.div 
-            whileHover={{ y: -5 }}
-            className="bg-card/40 backdrop-blur-2xl rounded-[2rem] p-8 border border-white/10 shadow-glass group/card relative overflow-hidden"
-          >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl transition-all group-hover/card:bg-blue-500/20" />
-            <div className="relative z-10">
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center border border-blue-500/20">
-                  <Moon className="text-blue-400 w-7 h-7" />
-                </div>
-                <span className="text-xs font-bold text-foreground/50 uppercase tracking-widest">Lunar Phase</span>
+        
+        {/* Expandable "Learn More" section */}
+        <motion.button
+          onClick={() => setExpanded(!expanded)}
+          className="mt-5 text-amber-700 text-sm hover:text-amber-800 font-semibold flex items-center gap-1 transition-colors"
+        >
+          {expanded ? (language === 'en' ? 'Show Less' : 'குறைவாக காட்டு') : (language === 'en' ? 'Learn More About Calculations' : 'கணக்கீடுகள் பற்றி மேலும் அறிக')}
+          <ChevronDown size={16} className={`transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`} />
+        </motion.button>
+        
+        <AnimatePresence>
+          {expanded && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="overflow-hidden"
+            >
+              <div className="mt-4 text-sm text-gray-700 bg-white/40 rounded-xl p-4 border border-white/50 leading-relaxed">
+                {language === 'en' 
+                  ? 'ParuvaKaala leverages planetary ephemeris data to determine the exact angular distance between the Sun and Moon (Tithi) to predict optimal sap flow in crops. This data is then cross-referenced with Sentinel-1 SAR soil moisture readings to create a highly accurate, micro-climate specific agricultural timeline.'
+                  : 'பருவகாலமானது சூரியன் மற்றும் சந்திரனுக்கு இடையிலான சரியான கோண தூரத்தை (திதி) தீர்மானிக்க கிரக எபிமெரிஸ் தரவைப் பயன்படுத்துகிறது. இந்த தரவு பின்னர் சென்டினல்-1 SAR மண் ஈரப்பதம் அளவீடுகளுடன் குறுக்கு-குறிப்பு செய்யப்படுகிறது.'}
               </div>
-              <h3 className="text-2xl font-bold mb-4">திதி & நட்சத்திரம்</h3>
-              <div className="space-y-4 text-foreground/70 font-medium">
-                <p>
-                  <strong className="text-foreground">Tithi (Phase):</strong> One Tithi equals 12° angular distance between Sun and Moon. Waxing phases (Shukla Paksha) are mathematically optimal for above-ground crops due to gravitational sap flow.
-                </p>
-                <p>
-                  <strong className="text-foreground">Nakshatra (Mansion):</strong> The 27 constellations guide precise sowing windows, ensuring seeds germinate under historically proven macro-environmental conditions.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Solar Movements */}
-          <motion.div 
-            whileHover={{ y: -5 }}
-            className="bg-card/40 backdrop-blur-2xl rounded-[2rem] p-8 border border-white/10 shadow-glass group/card relative overflow-hidden"
-          >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/10 rounded-full blur-2xl transition-all group-hover/card:bg-secondary/20" />
-            <div className="relative z-10">
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center border border-secondary/20">
-                  <Sun className="text-secondary w-7 h-7" />
-                </div>
-                <span className="text-xs font-bold text-foreground/50 uppercase tracking-widest">Solar Transit</span>
-              </div>
-              <h3 className="text-2xl font-bold mb-4">சூரிய சித்தாந்தம்</h3>
-              <div className="space-y-4 text-foreground/70 font-medium">
-                <p>
-                  <strong className="text-foreground">Solstices & Seasons:</strong> The Sun's transit (Rasi) defines the six Ritus (Seasons). The exact degree of the sun on the horizon dictates localized weather patterns.
-                </p>
-                <p>
-                  <strong className="text-foreground">Precision Agriculture:</strong> ParuvaKaala's AI correlates these ancient geometric alignments directly with real-time Sentinel-1 & 2 satellite data for your specific district.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </CardContent>
+    </Card>
   );
 }

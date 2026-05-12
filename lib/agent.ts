@@ -43,8 +43,15 @@ export async function generateCropPlan(crop: string, location: string, startDate
       week: i + 1,
       tamilMonth: tamilMonths[(currentDate.getMonth() + 3) % 12],
       gregorianDate: format(currentDate, 'MMM dd'),
-      panchangam,
-      satellite,
+      panchangam: {
+        tithi: panchangam.tithi,
+        nakshatra: panchangam.nakshatra,
+        auspicious: panchangam.isAuspicious,
+      },
+      satellite: {
+        ndvi: satellite.ndvi,
+        soilMoisture: satellite.soilMoisture,
+      },
       task,
       tamilTask
     });

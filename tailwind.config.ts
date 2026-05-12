@@ -29,14 +29,23 @@ const config: Config = {
           foreground: 'hsl(var(--accent-foreground))',
         },
         border: 'hsl(var(--border))',
+        custom: {
+          'farm-green': '#065F46',
+          'celestial-gold': '#D97706',
+          'soil-brown': '#92400E',
+          'sky-blue': '#0284C7'
+        }
       },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      backdropBlur: {
+        xs: '2px',
+      },
       backgroundImage: {
-        'glass-gradient': 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%)',
+        'glass-gradient': 'linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))',
         'glass-card': 'linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)',
       },
       boxShadow: {
@@ -44,6 +53,22 @@ const config: Config = {
       }
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    function({ addUtilities }: any) {
+      addUtilities({
+        '.glass': {
+          background: 'rgba(255, 255, 255, 0.1)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+        },
+        '.glass-dark': {
+          background: 'rgba(0, 0, 0, 0.2)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+        }
+      })
+    }
+  ],
 };
 export default config;
