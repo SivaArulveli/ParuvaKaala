@@ -23,7 +23,12 @@ const NDVIChart = dynamic(() => import('@/components/NDVIChart'), {
   ssr: false
 });
 
-const fetcher = (url: string) => fetch(url).then(res => res.json());
+import { generateCropPlan } from '@/lib/agent';
+
+const localFetcher = async ([crop, location, startDate]: [string, string, string]) => {
+  const plan = await generateCropPlan(crop, location, new Date(startDate));
+  return { success: true, plan };
+};
 
 const CROPS = [
   {
@@ -63,11 +68,11 @@ export default function ParuvaKaala() {
   const [crop, setCrop] = useState('paddy');
   const [location, setLocation] = useState('coimbatore');
   const [isGenerated, setIsGenerated] = useState(false);
-  const [fetchKey, setFetchKey] = useState<string | null>(null);
+  const [fetchKey, setFetchKey] = useState<[string, string, string] | null>(null);
 
   const { data, error, isLoading } = useSWR(
     fetchKey,
-    fetcher,
+    localFetcher,
     { 
       revalidateOnFocus: false,
       revalidateOnReconnect: true,
@@ -77,7 +82,7 @@ export default function ParuvaKaala() {
 
   const handleGenerate = () => {
     const stableDate = new Date().toISOString();
-    setFetchKey(`/api/plan?crop=${encodeURIComponent(crop)}&location=${encodeURIComponent(location)}&startDate=${encodeURIComponent(stableDate)}`);
+    setFetchKey([crop, location, stableDate]);
     setIsGenerated(true);
     setTimeout(() => {
       const el = document.getElementById('dashboard-start');
