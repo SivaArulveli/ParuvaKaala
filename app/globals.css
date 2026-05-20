@@ -4,31 +4,17 @@
 
 @layer base {
   :root {
-    --background: 140 15% 95%;
-    --foreground: 140 40% 10%;
-    --card: 0 0% 100%;
-    --card-foreground: 140 40% 10%;
-    --primary: 142 60% 40%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 40 90% 50%;
-    --secondary-foreground: 140 40% 10%;
-    --accent: 25 90% 55%;
-    --accent-foreground: 0 0% 100%;
-    --radius: 1.5rem;
-    --border: 140 10% 85%;
-  }
-
-  .dark {
-    --background: 160 35% 4%;
-    --foreground: 150 15% 95%;
-    --card: 160 30% 7%;
-    --card-foreground: 150 15% 95%;
-    --primary: 142 70% 45%;
-    --primary-foreground: 160 35% 4%;
-    --secondary: 40 90% 55%;
-    --secondary-foreground: 160 35% 4%;
+    --background: 160 50% 3%;
+    --foreground: 150 15% 96%;
+    --card: 160 30% 6%;
+    --card-foreground: 150 15% 96%;
+    --primary: 142 76% 45%;
+    --primary-foreground: 160 50% 3%;
+    --secondary: 40 95% 55%;
+    --secondary-foreground: 160 50% 3%;
     --accent: 25 90% 60%;
-    --accent-foreground: 160 35% 4%;
+    --accent-foreground: 160 50% 3%;
+    --radius: 1.5rem;
     --border: 160 20% 12%;
   }
 }
@@ -38,20 +24,21 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/20 selection:text-primary;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/20 backdrop-blur-md border border-white/30 shadow-xl;
+    @apply bg-zinc-900/65 backdrop-blur-xl border border-white/10 shadow-2xl;
   }
   
-  .glass-morphism {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  .glass-emerald {
+    @apply bg-emerald-950/30 backdrop-blur-xl border border-emerald-500/20 shadow-2xl shadow-emerald-950/20;
+  }
+
+  .glass-amber {
+    @apply bg-amber-950/20 backdrop-blur-xl border border-amber-500/20 shadow-2xl shadow-amber-950/10;
   }
   
   .bento-grid {
@@ -59,6 +46,10 @@
   }
   
   .bento-card {
-    @apply bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-300;
+    @apply bg-zinc-900/40 backdrop-blur-md rounded-3xl p-6 border border-white/5 shadow-xl hover:shadow-2xl hover:border-emerald-500/20 transition-all duration-500;
+  }
+
+  .radial-glow {
+    background: radial-gradient(circle at center, var(--tw-gradient-from) 0%, transparent 70%);
   }
 }

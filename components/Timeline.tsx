@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, Droplets, Eye, Sprout, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Calendar, Droplets, Eye, Sprout, Sparkles, CheckCircle2, Moon, Activity } from 'lucide-react';
 import { PlanWeek } from '@/lib/types';
 import { staggerContainer, fadeInUp } from '@/lib/animations';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -16,68 +16,103 @@ export default function Timeline({ plan, language }: TimelineProps) {
   const [showAll, setShowAll] = useState(false);
 
   const getIcon = (weekNum: number) => {
-    if (weekNum === 1) return <Sprout size={18} />;
-    if (weekNum % 3 === 0) return <Droplets size={18} />;
-    if (weekNum % 4 === 0) return <Eye size={18} />;
-    return <Calendar size={18} />;
+    if (weekNum === 1) return <Sprout size={16} className="text-emerald-400" />;
+    if (weekNum % 3 === 0) return <Droplets size={16} className="text-blue-400" />;
+    if (weekNum % 4 === 0) return <Eye size={16} className="text-purple-400" />;
+    return <Calendar size={16} className="text-zinc-400" />;
   };
 
   return (
-    <Card className="bg-gradient-to-br from-emerald-50 to-lime-50 shadow-inner border-emerald-100 lg:sticky lg:top-24 lg:h-[calc(100vh-8rem)] overflow-y-auto">
-      <CardHeader className="pb-4">
-        <CardTitle className="font-bold text-gray-800 text-lg flex items-center gap-2">
-          <Calendar className="text-emerald-600" size={20} />
-          {language === 'en' ? 'Execution Timeline' : 'செயல்பாட்டு காலவரிசை'}
+    <Card className="bg-zinc-900/40 backdrop-blur-md border-white/5 shadow-2xl rounded-3xl lg:sticky lg:top-24 lg:h-[calc(100vh-8rem)] flex flex-col">
+      <CardHeader className="pb-4 shrink-0 border-b border-white/5">
+        <CardTitle className="font-black text-zinc-100 text-lg flex items-center gap-2">
+          <Calendar className="text-emerald-400" size={20} />
+          {language === 'en' ? 'Sowing & Action Timeline' : 'விவசாய காலவரிசை'}
         </CardTitle>
+        <p className="text-xs text-zinc-500 font-medium">
+          {language === 'en' ? 'Calculated agricultural weeks (1 - 16)' : 'கணக்கிடப்பட்ட விவசாய வாரங்கள் (1 - 16)'}
+        </p>
       </CardHeader>
-      <CardContent className="pt-0">
-        <motion.div variants={staggerContainer} initial="hidden" animate="show">
+      
+      <CardContent className="pt-4 overflow-y-auto flex-1 custom-scrollbar space-y-3">
+        <motion.div variants={staggerContainer} initial="hidden" animate="show" className="space-y-3">
           <AnimatePresence>
             {plan.slice(0, showAll ? 16 : 4).map((week, i) => (
               <motion.div 
                 variants={fadeInUp} 
                 key={week.week}
                 layout
-                className={`mb-3 p-3 rounded-xl bg-white/60 backdrop-blur-sm hover:bg-white/90 transition-all cursor-pointer border-l-4 ${week.panchangam.auspicious ? 'border-emerald-500' : 'border-gray-300'} shadow-sm`}
+                className={`p-4 rounded-2xl bg-zinc-900/50 hover:bg-zinc-900/80 transition-all cursor-pointer border-l-4 ${
+                  week.panchangam.auspicious 
+                    ? 'border-emerald-500 shadow-[inset_4px_0_12px_rgba(16,185,129,0.08)]' 
+                    : 'border-zinc-700'
+                } border-t border-r border-b border-white/5 shadow-md`}
               >
-                {/* Top row: Date range + Status badge */}
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-xs font-bold text-emerald-700 bg-emerald-100 px-2 py-1 rounded uppercase tracking-wider">
-                    Week {week.week}
+                {/* Header row: Week indicator + Date */}
+                <div className="flex justify-between items-center mb-3">
+                  <span className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full ${
+                    week.panchangam.auspicious 
+                      ? 'bg-emerald-950/40 text-emerald-400 border border-emerald-500/20' 
+                      : 'bg-zinc-800 text-zinc-400 border border-white/5'
+                  }`}>
+                    {language === 'en' ? `Week ${week.week}` : `வாரம் ${week.week}`}
                   </span>
-                  <span className="flex items-center gap-1 text-xs text-gray-500 font-medium">
-                    {week.panchangam.auspicious ? <CheckCircle2 size={14} className="text-emerald-500" /> : <AlertCircle size={14} className="text-gray-400" />}
+                  
+                  <span className="flex items-center gap-1 text-[11px] text-zinc-500 font-bold">
                     {week.gregorianDate}
                   </span>
                 </div>
                 
-                {/* Middle: Nakshatra */}
-                <div className="mb-2 flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
-                    {getIcon(week.week)}
+                {/* Center: Nakshatra info */}
+                <div className="mb-3 flex items-center justify-between gap-2 bg-zinc-950/30 p-2 rounded-xl border border-white/5">
+                  <div className="flex items-center gap-2">
+                    <div className="w-7 h-7 rounded-lg bg-zinc-900 border border-white/10 flex items-center justify-center shrink-0">
+                      {getIcon(week.week)}
+                    </div>
+                    <div>
+                      <p className="text-xs font-black text-zinc-300">{week.panchangam.nakshatra}</p>
+                      <p className="text-[10px] text-zinc-500">{week.panchangam.tithi}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm font-bold text-gray-800">{week.panchangam.nakshatra}</p>
-                    <p className="text-xs text-gray-500">{week.panchangam.tithi}</p>
-                  </div>
+                  
+                  {week.panchangam.auspicious && (
+                    <span className="flex items-center gap-1 text-[10px] font-bold text-emerald-400 bg-emerald-950/20 border border-emerald-500/20 px-1.5 py-0.5 rounded-md">
+                      <Sparkles size={10} className="animate-spin-slow" />
+                      {language === 'en' ? 'Auspicious' : 'உகந்தது'}
+                    </span>
+                  )}
                 </div>
                 
-                {/* Bottom: Action */}
-                <p className="text-sm font-bold text-gray-900 leading-snug">
+                {/* Task Content */}
+                <p className="text-sm font-extrabold text-zinc-200 leading-snug">
                   {language === 'en' ? week.task : week.tamilTask}
                 </p>
+                
+                {/* Quick soil stats */}
+                <div className="mt-2.5 pt-2 border-t border-white/5 flex items-center gap-3 text-[10px] text-zinc-500 font-semibold">
+                  <span className="flex items-center gap-1">
+                    <Activity size={10} className="text-emerald-500" />
+                    NDVI: {week.satellite.ndvi.toFixed(2)}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Droplets size={10} className="text-blue-400" />
+                    {language === 'en' ? `Soil: ${week.satellite.soilMoisture}` : `மண்: ${week.satellite.soilMoisture === 'Low' ? 'குறைவு' : 'நன்று'}`}
+                  </span>
+                </div>
               </motion.div>
             ))}
           </AnimatePresence>
         </motion.div>
-        
+      </CardContent>
+
+      <div className="p-4 shrink-0 border-t border-white/5">
         <button 
           onClick={() => setShowAll(!showAll)}
-          className="w-full text-center text-emerald-600 text-sm mt-4 py-2 hover:bg-emerald-100 rounded-lg transition-colors font-medium"
+          className="w-full text-center text-emerald-400 text-xs py-2.5 bg-zinc-950/40 hover:bg-emerald-950/20 border border-emerald-500/10 hover:border-emerald-500/30 rounded-xl transition-all font-black uppercase tracking-wider"
         >
-          {showAll ? (language === 'en' ? 'Show Less' : 'குறைவாக காட்டு') : (language === 'en' ? 'View All 16 Weeks →' : 'அனைத்து 16 வாரங்களையும் காண்க →')}
+          {showAll ? (language === 'en' ? 'Show Less' : 'குறைவாக காட்டு') : (language === 'en' ? 'View All 16 Weeks' : 'அனைத்து 16 வாரங்களையும் காண்க')}
         </button>
-      </CardContent>
+      </div>
     </Card>
   );
 }

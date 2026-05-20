@@ -1,6 +1,6 @@
 'use client';
 
-import { Activity, Satellite } from 'lucide-react';
+import { Activity, Satellite, Info } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 import { motion } from 'framer-motion';
 import { PlanWeek } from '@/lib/types';
@@ -24,60 +24,78 @@ export default function NDVIChart({ plan, language }: NDVIChartProps) {
   });
 
   return (
-    <Card className="bg-white shadow-lg border-gray-100">
-      <CardHeader>
-        <CardTitle className="text-xl font-semibold text-gray-800 flex items-center gap-2">
-          <Activity className="text-emerald-600" size={24} />
-          {language === 'en' ? 'Vegetation Health Projection' : 'பயிர் ஆரோக்கிய மதிப்பீடு'}
+    <Card className="bg-zinc-900/40 backdrop-blur-md border-white/5 shadow-2xl rounded-3xl overflow-hidden">
+      <CardHeader className="pb-2">
+        <CardTitle className="text-lg font-black text-zinc-100 flex items-center gap-2">
+          <Activity className="text-emerald-400" size={20} />
+          {language === 'en' ? 'Vegetation Canopy Index (NDVI)' : 'பயிர் பசுமை குறியீடு (NDVI)'}
         </CardTitle>
+        <p className="text-xs text-zinc-500 font-medium">
+          {language === 'en' ? '16-week live vegetation density forecasting model.' : '16 வார கால பசுமை அடர்த்தி கணிப்பு வரைபடம்.'}
+        </p>
       </CardHeader>
-      <CardContent>
+      
+      <CardContent className="pt-2 space-y-4">
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
+          className="relative"
         >
-          <div className="w-full h-[280px]">
+          {/* Chart Wrapper */}
+          <div className="w-full h-[280px] bg-zinc-950/20 rounded-2xl border border-white/5 p-4">
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+              <AreaChart data={chartData} margin={{ top: 10, right: 10, left: -25, bottom: 0 }}>
                 <defs>
                   <linearGradient id="ndviGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#10b981" stopOpacity={0.8}/>
-                    <stop offset="100%" stopColor="#10b981" stopOpacity={0.1}/>
+                    <stop offset="0%" stopColor="#10b981" stopOpacity={0.4}/>
+                    <stop offset="100%" stopColor="#10b981" stopOpacity={0.0}/>
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
-                <XAxis dataKey="week" stroke="#6b7280" style={{ fontSize: 12 }} axisLine={false} tickLine={false} dy={10} />
-                <YAxis stroke="#6b7280" domain={[0, 1]} style={{ fontSize: 12 }} axisLine={false} tickLine={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#27272a" vertical={false} />
+                <XAxis dataKey="week" stroke="#71717a" style={{ fontSize: 10, fontWeight: 'bold' }} axisLine={false} tickLine={false} dy={10} />
+                <YAxis stroke="#71717a" domain={[0.4, 1.0]} style={{ fontSize: 10, fontWeight: 'bold' }} axisLine={false} tickLine={false} />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                    borderRadius: '12px',
-                    border: '1px solid #d1d5db',
-                    boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
+                    backgroundColor: '#18181b',
+                    borderRadius: '16px',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.5)'
                   }}
-                  itemStyle={{ color: '#065F46', fontWeight: 'bold' }}
-                  cursor={{ stroke: '#10b981', strokeWidth: 1, strokeDasharray: '5 5' }}
+                  labelStyle={{ color: '#a1a1aa', fontWeight: 'bold', fontSize: '11px' }}
+                  itemStyle={{ color: '#34d399', fontWeight: 'black', fontSize: '13px' }}
+                  cursor={{ stroke: '#10b981', strokeWidth: 1.5, strokeDasharray: '3 3' }}
                 />
                 <Area 
                   type="monotone" 
                   dataKey="ndvi" 
-                  stroke="#059669" 
+                  stroke="#10b981" 
                   strokeWidth={3}
                   fill="url(#ndviGradient)"
                   animationDuration={1500}
                 />
-                <ReferenceLine x="Wk 2" stroke="#f59e0b" strokeDasharray="3 3" />
+                {/* Horizontal reference line for optimal threshold */}
+                <ReferenceLine y={0.6} stroke="#f59e0b" strokeDasharray="3 3" strokeWidth={1} label={{ value: 'Optimal Threshold (0.6)', fill: '#f59e0b', fontSize: 9, position: 'top' }} />
               </AreaChart>
             </ResponsiveContainer>
           </div>
           
-          <div className="flex flex-wrap items-center justify-between mt-4 text-sm text-gray-600">
-            <span className="flex items-center gap-1">
-              <Satellite size={16} className="text-blue-500" />
-              {language === 'en' ? 'Live Satellite Data (Sentinel-2)' : 'செயற்கைக்கோள் தரவு'}
+          {/* Scientific Info Box */}
+          <div className="p-3.5 bg-zinc-950/40 rounded-2xl border border-white/5 text-xs text-zinc-400 flex gap-2 items-start leading-relaxed">
+            <Info size={14} className="text-emerald-400 shrink-0 mt-0.5" />
+            <p>
+              {language === 'en' 
+                ? 'NDVI measures live green vegetation. The baseline is established using optical red and near-infrared reflectance. Values above 0.6 (marked in yellow) indicate high crop vigor and dense canopy coverage.' 
+                : 'NDVI என்பது பயிர்களின் பச்சைய அளவீடாகும். 0.6-க்கு மேல் உள்ள அளவீடுகள் பயிர்கள் ஆரோக்கியமாக மற்றும் அடர்த்தியாக வளர்வதைக் குறிக்கிறது.'}
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-between gap-4 text-xs text-zinc-500 font-bold pt-2">
+            <span className="flex items-center gap-1.5">
+              <Satellite size={14} className="text-emerald-400" />
+              {language === 'en' ? 'Sentinel-2 Multispectral Instrument' : 'சென்டினல்-2 செயற்கைக்கோள் தரவு'}
             </span>
-            <span className="text-xs bg-gray-100 px-3 py-1.5 rounded-lg font-medium">
-              {language === 'en' ? 'Last updated:' : 'கடைசி புதுப்பிப்பு:'} {lastUpdate}
+            <span className="bg-zinc-900 border border-white/5 px-2.5 py-1 rounded-lg">
+              {language === 'en' ? 'Update: Live feed sync' : 'புதுப்பிப்பு: லைவ் சிங்க்'} ({lastUpdate})
             </span>
           </div>
         </motion.div>
