@@ -5,9 +5,13 @@ import { addWeeks, format } from 'date-fns';
 export async function generateCropPlan(crop: string, location: string, startDate: Date) {
   const plan = [];
   
-  // Dummy coordinates for Coimbatore
-  const lat = 11.0168;
-  const lon = 76.9558;
+  const LOCATION_COORDS: Record<string, { lat: number; lon: number }> = {
+    coimbatore: { lat: 11.0168, lon: 76.9558 },
+    thanjavur: { lat: 10.7870, lon: 79.1378 },
+    madurai: { lat: 9.9252, lon: 78.1198 },
+  };
+
+  const { lat, lon } = LOCATION_COORDS[location] || LOCATION_COORDS.coimbatore;
 
   const tamilMonths = [
     'Chithirai (சித்திரை)', 'Vaikasi (வைகாசி)', 'Aani (ஆனி)', 'Aadi (ஆடி)',

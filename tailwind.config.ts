@@ -30,10 +30,12 @@ const config: Config = {
         },
         border: 'hsl(var(--border))',
         custom: {
-          'farm-green': '#065F46',
-          'celestial-gold': '#D97706',
-          'soil-brown': '#92400E',
-          'sky-blue': '#0284C7'
+          'brand-maroon': '#801818',
+          'brand-green': '#2E5A36',
+          'brand-soil': '#8B7355',
+          'brand-blue': '#3A6B8C',
+          'brand-bg': '#FAF8F5',
+          'brand-text': '#2E3A34'
         }
       },
       borderRadius: {

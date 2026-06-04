@@ -4,10 +4,10 @@
 
 @layer base {
   :root {
-    --background: 160 50% 3%;
-    --foreground: 150 15% 96%;
-    --card: 160 30% 6%;
-    --card-foreground: 150 15% 96%;
+    --background: 40 25% 97%; /* #FAF8F5 */
+    --foreground: 150 11% 20%; /* #2E3A34 */
+    --card: 0 0% 100%;
+    --card-foreground: 150 11% 20%;
     --primary: 142 76% 45%;
     --primary-foreground: 160 50% 3%;
     --secondary: 40 95% 55%;
@@ -15,7 +15,7 @@
     --accent: 25 90% 60%;
     --accent-foreground: 160 50% 3%;
     --radius: 1.5rem;
-    --border: 160 20% 12%;
+    --border: 0 0% 85%;
   }
 }
 
@@ -24,21 +24,21 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/20 selection:text-primary;
+    @apply bg-brand-bg text-brand-text font-sans antialiased selection:bg-brand-green/20 selection:text-brand-green;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-zinc-900/65 backdrop-blur-xl border border-white/10 shadow-2xl;
+    @apply bg-white/70 backdrop-blur-xl border border-black/5 shadow-xl;
   }
   
   .glass-emerald {
-    @apply bg-emerald-950/30 backdrop-blur-xl border border-emerald-500/20 shadow-2xl shadow-emerald-950/20;
+    @apply bg-emerald-50/70 backdrop-blur-xl border border-emerald-500/20 shadow-xl shadow-emerald-900/5;
   }
 
   .glass-amber {
-    @apply bg-amber-950/20 backdrop-blur-xl border border-amber-500/20 shadow-2xl shadow-amber-950/10;
+    @apply bg-amber-50/70 backdrop-blur-xl border border-amber-500/20 shadow-xl shadow-amber-900/5;
   }
   
   .bento-grid {
@@ -46,7 +46,7 @@
   }
   
   .bento-card {
-    @apply bg-zinc-900/40 backdrop-blur-md rounded-3xl p-6 border border-white/5 shadow-xl hover:shadow-2xl hover:border-emerald-500/20 transition-all duration-500;
+    @apply bg-white/70 backdrop-blur-md rounded-3xl p-6 border border-black/5 shadow-lg hover:shadow-xl hover:border-brand-green/20 transition-all duration-500;
   }
 
   .radial-glow {

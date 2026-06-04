@@ -54,14 +54,14 @@ export default function KeyMetrics({ plan, language }: KeyMetricsProps) {
   ];
 
   return (
-    <Card className="bg-zinc-900/40 backdrop-blur-md border-white/5 shadow-2xl rounded-3xl relative overflow-hidden">
+    <Card className="bg-white/40 backdrop-blur-md border-black/5 shadow-2xl rounded-3xl relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-transparent pointer-events-none" />
       <CardHeader className="pb-2">
-        <CardTitle className="text-lg font-black text-zinc-100 flex items-center gap-2">
+        <CardTitle className="text-lg font-black text-brand-text flex items-center gap-2">
           <Gauge className="text-emerald-400" size={20} />
           {language === 'en' ? 'Telemetry Summary' : 'விவசாய குறியீடுகள்'}
         </CardTitle>
-        <p className="text-xs text-zinc-500 font-medium">
+        <p className="text-xs text-brand-text0 font-medium">
           {language === 'en' ? 'Click on any metric card to read detailed explanation.' : 'விளக்கத்தைக் காண அட்டவணையை கிளிக் செய்யவும்.'}
         </p>
       </CardHeader>
@@ -77,19 +77,19 @@ export default function KeyMetrics({ plan, language }: KeyMetricsProps) {
               className={`text-left p-5 rounded-2xl border transition-all duration-300 relative group flex flex-col justify-between min-h-[130px] ${
                 activeInfo === metric.id
                   ? 'bg-emerald-950/20 border-emerald-500 text-white shadow-lg'
-                  : 'bg-zinc-900/30 border-white/5 hover:border-white/10 hover:bg-zinc-900/50'
+                  : 'bg-white/30 border-black/5 hover:border-black/10 hover:bg-white/50'
               }`}
             >
               <div className="flex justify-between items-center w-full">
-                <div className="p-2 bg-zinc-900/80 rounded-xl border border-white/5 group-hover:border-emerald-500/20 transition-colors">
+                <div className="p-2 bg-white/80 rounded-xl border border-black/5 group-hover:border-emerald-500/20 transition-colors">
                   {metric.icon}
                 </div>
-                <Info size={14} className="text-zinc-500 group-hover:text-emerald-400 transition-colors" />
+                <Info size={14} className="text-brand-text0 group-hover:text-emerald-400 transition-colors" />
               </div>
               
               <div className="mt-3">
-                <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">{metric.label}</p>
-                <p className="text-2xl font-black text-zinc-100 mt-1">{metric.value}</p>
+                <p className="text-xs font-semibold text-brand-text0 uppercase tracking-wider">{metric.label}</p>
+                <p className="text-2xl font-black text-brand-text mt-1">{metric.value}</p>
                 <p className={`text-[10px] font-bold mt-1 ${metric.id === 2 ? 'text-amber-400' : 'text-emerald-400'}`}>
                   ● {metric.status}
                 </p>
@@ -107,10 +107,10 @@ export default function KeyMetrics({ plan, language }: KeyMetricsProps) {
               exit={{ height: 0, opacity: 0, marginTop: 0 }}
               className="overflow-hidden"
             >
-              <div className="p-4 bg-zinc-950/50 border border-white/5 rounded-2xl relative">
+              <div className="p-4 bg-brand-bg/50 border border-black/5 rounded-2xl relative">
                 <button
                   onClick={() => setActiveInfo(null)}
-                  className="absolute top-3 right-3 text-zinc-400 hover:text-white"
+                  className="absolute top-3 right-3 text-gray-600 hover:text-white"
                 >
                   <X size={14} />
                 </button>
@@ -120,7 +120,7 @@ export default function KeyMetrics({ plan, language }: KeyMetricsProps) {
                     <h4 className="text-xs font-black uppercase text-emerald-400 tracking-wider">
                       {metrics[activeInfo].label} {language === 'en' ? 'Details' : 'விளக்கம்'}
                     </h4>
-                    <p className="text-xs text-zinc-400 mt-2 leading-relaxed font-medium">
+                    <p className="text-xs text-gray-600 mt-2 leading-relaxed font-medium">
                       {metrics[activeInfo].description}
                     </p>
                   </div>

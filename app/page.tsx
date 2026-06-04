@@ -15,8 +15,8 @@ import { Button } from '@/components/ui/button';
 // Lazy load the chart
 const NDVIChart = dynamic(() => import('@/components/NDVIChart'), {
   loading: () => (
-    <div className="animate-pulse space-y-4 bg-zinc-900/40 p-6 rounded-3xl border border-white/5 shadow-2xl">
-      <div className="h-8 bg-zinc-800 rounded w-1/3 mb-6"></div>
+    <div className="animate-pulse space-y-4 bg-white/40 p-6 rounded-3xl border border-black/5 shadow-2xl">
+      <div className="h-8 bg-gray-50 rounded w-1/3 mb-6"></div>
       <div className="h-64 bg-zinc-850 rounded-2xl"></div>
     </div>
   ),
@@ -94,7 +94,7 @@ export default function ParuvaKaala() {
   const selectedLocationDetails = LOCATIONS.find(l => l.id === location);
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 pb-32 overflow-x-hidden selection:bg-emerald-500/20 selection:text-emerald-400">
+    <div className="min-h-screen bg-brand-bg text-brand-text pb-32 overflow-x-hidden selection:bg-emerald-500/20 selection:text-emerald-400">
       {/* Background Decorative Glows */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-emerald-950/20 rounded-full blur-[120px] pointer-events-none -z-10" />
       <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-amber-950/15 rounded-full blur-[140px] pointer-events-none -z-10" />
@@ -102,14 +102,14 @@ export default function ParuvaKaala() {
       {/* Bilingual Toggle */}
       <button 
         onClick={() => setLanguage(l => l === 'en' ? 'ta' : 'en')}
-        className="fixed top-4 right-4 z-50 px-4 py-2 bg-zinc-900/80 backdrop-blur-md rounded-full shadow-xl border border-white/10 hover:bg-zinc-800 hover:border-emerald-500/30 transition-all flex items-center gap-2 font-semibold text-sm text-zinc-300"
+        className="fixed top-4 right-4 z-50 px-4 py-2 bg-white/80 backdrop-blur-md rounded-full shadow-xl border border-black/10 hover:bg-gray-50 hover:border-emerald-500/30 transition-all flex items-center gap-2 font-semibold text-sm text-gray-800"
       >
         <Languages size={16} className="text-emerald-400" />
         {language === 'en' ? 'தமிழ்' : 'English'}
       </button>
 
       {/* Header Banner Image */}
-      <div className="w-full h-48 md:h-72 relative border-b border-white/5">
+      <div className="w-full h-48 md:h-72 relative border-b border-black/5">
         <Image
           src="/farm_banner.png"
           alt="ParuvaKaala Farm Banner"
@@ -149,7 +149,7 @@ export default function ParuvaKaala() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="text-base md:text-lg text-zinc-400 max-w-2xl mx-auto font-medium"
+          className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto font-medium"
         >
           {language === 'en' 
             ? 'Synchronizing Surya Siddhanta lunar algorithms with live Sentinel satellite readings to draft your optimal 16-week cultivation strategy.' 
@@ -163,7 +163,7 @@ export default function ParuvaKaala() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="glass rounded-3xl p-6 md:p-8 border border-white/10 shadow-2xl relative overflow-hidden"
+          className="glass rounded-3xl p-6 md:p-8 border border-black/10 shadow-2xl relative overflow-hidden"
         >
           {/* Card subtle pattern */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
@@ -184,13 +184,13 @@ export default function ParuvaKaala() {
                     className={`p-4 rounded-2xl text-left border transition-all duration-300 ${
                       location === loc.id 
                         ? 'bg-emerald-950/30 border-emerald-500 text-white shadow-[0_0_15px_rgba(16,185,129,0.15)]' 
-                        : 'bg-zinc-900/40 border-white/5 text-zinc-400 hover:border-white/10 hover:bg-zinc-900/60'
+                        : 'bg-white/40 border-black/5 text-gray-600 hover:border-black/10 hover:bg-white/60'
                     }`}
                   >
-                    <p className="font-bold text-base text-zinc-200">
+                    <p className="font-bold text-base text-gray-900">
                       {language === 'en' ? loc.name : loc.tamilName}
                     </p>
-                    <p className="text-xs text-zinc-500 mt-1">{loc.region}</p>
+                    <p className="text-xs text-brand-text0 mt-1">{loc.region}</p>
                   </button>
                 ))}
               </div>
@@ -211,13 +211,13 @@ export default function ParuvaKaala() {
                     className={`p-5 rounded-2xl text-left border relative overflow-hidden transition-all duration-300 flex flex-col justify-between min-h-[140px] ${
                       crop === c.id 
                         ? 'bg-emerald-950/30 border-emerald-500 text-white shadow-[0_0_20px_rgba(16,185,129,0.2)]' 
-                        : 'bg-zinc-900/40 border-white/5 text-zinc-400 hover:border-white/10 hover:bg-zinc-900/60'
+                        : 'bg-white/40 border-black/5 text-gray-600 hover:border-black/10 hover:bg-white/60'
                     }`}
                   >
                     <div className="flex justify-between items-start w-full">
                       <span className="text-3xl filter saturate-100">{c.icon}</span>
                       {crop === c.id && (
-                        <span className="bg-emerald-500 text-zinc-950 text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wide">
+                        <span className="bg-emerald-500 text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wide">
                           Selected
                         </span>
                       )}
@@ -226,7 +226,7 @@ export default function ParuvaKaala() {
                       <p className="font-extrabold text-lg text-zinc-150 mt-4">
                         {language === 'en' ? c.name : c.tamilName}
                       </p>
-                      <p className="text-xs text-zinc-500 mt-1 line-clamp-2">
+                      <p className="text-xs text-brand-text0 mt-1 line-clamp-2">
                         {language === 'en' ? c.description : c.tamilDescription}
                       </p>
                     </div>
@@ -236,8 +236,8 @@ export default function ParuvaKaala() {
             </div>
 
             {/* Action Button */}
-            <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/5">
-              <p className="text-xs text-zinc-500 font-medium max-w-md">
+            <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-black/5">
+              <p className="text-xs text-brand-text0 font-medium max-w-md">
                 {language === 'en' 
                   ? `Drafting timeline for ${selectedCropDetails?.name} in ${selectedLocationDetails?.name}. Ready to query Sentinel satellites.`
                   : `${selectedLocationDetails?.tamilName} பகுதியில் ${selectedCropDetails?.tamilName} பயிர் செய்வதற்கான திட்டமிடல் தயார்.`}
@@ -246,7 +246,7 @@ export default function ParuvaKaala() {
               <Button
                 onClick={handleGenerate}
                 size="lg"
-                className="w-full sm:w-auto px-8 py-6 bg-gradient-to-r from-emerald-500 to-emerald-400 hover:from-emerald-600 hover:to-emerald-500 text-zinc-950 font-black rounded-2xl shadow-xl shadow-emerald-950/30 transition-all hover:scale-[1.02] flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-8 py-6 bg-gradient-to-r from-emerald-500 to-emerald-400 hover:from-emerald-600 hover:to-emerald-500 text-white font-black rounded-2xl shadow-xl shadow-emerald-950/30 transition-all hover:scale-[1.02] flex items-center justify-center gap-2"
                 asChild={false}
               >
                 <span>{language === 'en' ? 'Generate Cultivation Plan' : 'பயிர் திட்டத்தை உருவாக்கு'}</span>
@@ -266,23 +266,23 @@ export default function ParuvaKaala() {
             exit={{ opacity: 0 }}
             className="px-4 max-w-5xl mx-auto mt-16 space-y-6"
           >
-            <div className="flex items-center gap-2 border-b border-white/5 pb-4">
+            <div className="flex items-center gap-2 border-b border-black/5 pb-4">
               <HelpCircle className="text-emerald-400" size={22} />
-              <h2 className="text-xl font-bold tracking-tight text-zinc-200">
+              <h2 className="text-xl font-bold tracking-tight text-gray-900">
                 {language === 'en' ? 'How ParuvaKaala Works' : 'பருவகாலம் எவ்வாறு செயல்படுகிறது?'}
               </h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Card 1 */}
-              <div className="p-6 rounded-3xl bg-zinc-900/35 border border-white/5 space-y-4 hover:border-emerald-500/10 transition-all">
+              <div className="p-6 rounded-3xl bg-white/35 border border-black/5 space-y-4 hover:border-emerald-500/10 transition-all">
                 <div className="w-12 h-12 rounded-2xl bg-emerald-950/50 border border-emerald-500/20 flex items-center justify-center">
                   <Moon className="text-emerald-400" size={22} />
                 </div>
-                <h3 className="font-extrabold text-base text-zinc-200">
+                <h3 className="font-extrabold text-base text-gray-900">
                   {language === 'en' ? 'Surya Siddhanta Astronomy' : 'சூர்ய சித்தாந்த விண்மீன் கணிதம்'}
                 </h3>
-                <p className="text-sm text-zinc-400 leading-relaxed">
+                <p className="text-sm text-gray-600 leading-relaxed">
                   {language === 'en' 
                     ? 'Calculates the relative angle of the Moon and Sun (Tithi) and solar transits to identify periods of high sap flow (optimal for sowing and grafting) and low sap flow (optimal for pruning and harvesting).'
                     : 'விதைப்பதற்கும் ஒட்டு கட்டுவதற்கும் உகந்த காலம் (அதிக சாறு ஓட்டம்) மற்றும் அறுவடைக்கு உகந்த காலத்தை அறிய சூரிய-சந்திர கோணங்களைக் கணக்கிடுகிறது.'}
@@ -290,14 +290,14 @@ export default function ParuvaKaala() {
               </div>
 
               {/* Card 2 */}
-              <div className="p-6 rounded-3xl bg-zinc-900/35 border border-white/5 space-y-4 hover:border-emerald-500/10 transition-all">
+              <div className="p-6 rounded-3xl bg-white/35 border border-black/5 space-y-4 hover:border-emerald-500/10 transition-all">
                 <div className="w-12 h-12 rounded-2xl bg-blue-950/50 border border-blue-500/20 flex items-center justify-center">
                   <Satellite className="text-blue-400" size={22} />
                 </div>
-                <h3 className="font-extrabold text-base text-zinc-200">
+                <h3 className="font-extrabold text-base text-gray-900">
                   {language === 'en' ? 'Sentinel-2 Remote Sensing' : 'சென்டினல் செயற்கைக்கோள் தரவு'}
                 </h3>
-                <p className="text-sm text-zinc-400 leading-relaxed">
+                <p className="text-sm text-gray-600 leading-relaxed">
                   {language === 'en' 
                     ? 'Monitors Normalized Difference Vegetation Index (NDVI) and SAR-derived surface soil moisture. This prevents dry-sowing errors and tracks live chlorophyll concentration on your fields.'
                     : 'தாவரங்களின் ஆரோக்கியக் குறியீடு (NDVI) மற்றும் மண்ணின் ஈரப்பதத்தை தொடர்ந்து கண்காணிக்கிறது. இது வறண்ட விதைப்பு பிழைகளை தவிர்க்க உதவுகிறது.'}
@@ -305,14 +305,14 @@ export default function ParuvaKaala() {
               </div>
 
               {/* Card 3 */}
-              <div className="p-6 rounded-3xl bg-zinc-900/35 border border-white/5 space-y-4 hover:border-emerald-500/10 transition-all">
+              <div className="p-6 rounded-3xl bg-white/35 border border-black/5 space-y-4 hover:border-emerald-500/10 transition-all">
                 <div className="w-12 h-12 rounded-2xl bg-amber-950/50 border border-amber-500/20 flex items-center justify-center">
                   <Compass className="text-amber-400" size={22} />
                 </div>
-                <h3 className="font-extrabold text-base text-zinc-200">
+                <h3 className="font-extrabold text-base text-gray-900">
                   {language === 'en' ? 'Localized Rules Engine' : 'உள்ளூர் விவசாய விதிகள்'}
                 </h3>
-                <p className="text-sm text-zinc-400 leading-relaxed">
+                <p className="text-sm text-gray-600 leading-relaxed">
                   {language === 'en' 
                     ? 'Cross-references crop-specific thresholds (Paddy vs Sugarcane) with regional rainfall/temperature averages to recommend precise weekly watering, weeding, fertilizing, and harvesting intervals.'
                     : 'வட்டார காலநிலை சராசரிகள் மற்றும் பயிர் சார்ந்த தேவைகளை ஒருங்கிணைத்து வாராந்திர நீர் மேலாண்மை மற்றும் உரமிடும் அட்டவணையை வழங்குகிறது.'}
@@ -328,9 +328,9 @@ export default function ParuvaKaala() {
       {isGenerated && (
         <section className="p-4 md:p-6 max-w-7xl mx-auto mt-6 relative z-20">
           {isLoading ? (
-            <div className="flex flex-col items-center justify-center py-24 bg-zinc-900/40 rounded-3xl border border-white/5 shadow-2xl">
+            <div className="flex flex-col items-center justify-center py-24 bg-white/40 rounded-3xl border border-black/5 shadow-2xl">
               <RefreshCw className="w-12 h-12 text-emerald-500 animate-spin mb-4" />
-              <p className="text-zinc-400 font-bold tracking-wide">
+              <p className="text-gray-600 font-bold tracking-wide">
                 {language === 'en' ? 'Synchronizing Earth Radar & Lunar Almanacs...' : 'செயற்கைக்கோள் மற்றும் பஞ்சாங்க விபரங்களை சேகரிக்கிறது...'}
               </p>
               <p className="text-xs text-zinc-600 mt-2">
@@ -348,7 +348,7 @@ export default function ParuvaKaala() {
               {/* Right: Data Cards - 8 columns on desktop */}
               <main className="lg:col-span-8 space-y-6">
                 {/* Header card representing selected crop and location */}
-                <div className="p-6 rounded-3xl bg-gradient-to-r from-zinc-900/80 to-zinc-900/40 border border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="p-6 rounded-3xl bg-gradient-to-r from-zinc-900/80 to-zinc-900/40 border border-black/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div>
                     <h2 className="text-2xl font-black text-white flex items-center gap-2">
                       <span className="text-3xl">{selectedCropDetails?.icon}</span>
@@ -356,7 +356,7 @@ export default function ParuvaKaala() {
                         ? `${selectedCropDetails?.name} Cultivation Timeline` 
                         : `${selectedCropDetails?.tamilName} சாகுபடி காலவரிசை`}
                     </h2>
-                    <p className="text-xs text-zinc-400 mt-1 flex items-center gap-1">
+                    <p className="text-xs text-gray-600 mt-1 flex items-center gap-1">
                       <MapPin size={12} className="text-emerald-400" />
                       {language === 'en' 
                         ? `Configured for ${selectedLocationDetails?.name} (${selectedLocationDetails?.region})` 
@@ -369,7 +369,7 @@ export default function ParuvaKaala() {
                       setFetchKey(null);
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
-                    className="px-4 py-2 rounded-xl bg-zinc-800 text-xs font-bold hover:bg-zinc-700 transition-colors self-start sm:self-center border border-white/5 hover:border-emerald-500/20"
+                    className="px-4 py-2 rounded-xl bg-gray-50 text-xs font-bold hover:bg-gray-100 transition-colors self-start sm:self-center border border-black/5 hover:border-emerald-500/20"
                   >
                     {language === 'en' ? 'Change Configurations' : 'விபரங்களை மாற்றுக'}
                   </button>
@@ -395,17 +395,17 @@ export default function ParuvaKaala() {
 
             </div>
           ) : (
-            <div className="text-center py-20 bg-zinc-900/40 rounded-3xl border border-red-500/20 shadow-2xl">
+            <div className="text-center py-20 bg-white/40 rounded-3xl border border-red-500/20 shadow-2xl">
               <p className="text-4xl mb-4">⚠️</p>
               <p className="text-red-400 font-bold text-lg mb-2">
                 {language === 'en' ? 'Failed to synchronize agricultural telemetry.' : 'விவசாய விபரங்களைப் பெற முடியவில்லை.'}
               </p>
-              <p className="text-zinc-500 text-sm max-w-md mx-auto mb-6">
+              <p className="text-brand-text0 text-sm max-w-md mx-auto mb-6">
                 {error?.message || 'Please check your connection and configuration inputs, and try again.'}
               </p>
               <Button 
                 onClick={() => { setIsGenerated(false); setTimeout(() => setIsGenerated(true), 100); }} 
-                className="px-6 py-3 bg-emerald-500 text-zinc-950 hover:bg-emerald-400 rounded-xl font-bold transition-all"
+                className="px-6 py-3 bg-emerald-500 text-white hover:bg-emerald-400 rounded-xl font-bold transition-all"
               >
                 {language === 'en' ? 'Retry Synchronization' : 'மீண்டும் முயற்சிக்கவும்'}
               </Button>

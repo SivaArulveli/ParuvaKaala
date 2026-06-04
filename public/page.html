@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+<html lang="ta-IN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParuvaKaala (பруவகாலம்) - Siva Foundation</title>
+    
+    <!-- Google Fonts: Lora (headings) & Inter + Noto Sans Tamil (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;0,700;1,400&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Reset & Variables */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-page: #FAF8F5; /* Warm linen/cream */
+            --text-main: #2D2522; /* Deep warm brown-black */
+            --text-light: #5A504B; /* Muted brown-grey */
+            --brand-primary: #801818; /* Deep burgundy/maroon */
+            --brand-primary-light: #9C2E2E;
+            --brand-bg-light: #F7EFEF;
+            --green-leaf: #2E5A36; /* Muted leaf green */
+            --green-bg-light: #EEF4EF;
+            --brown-soil: #8B7355; /* Earthy soil brown */
+            --brown-bg-light: #F4F0EC;
+            --blue-sky: #3A6B8C; /* Steel/sky blue */
+            --blue-bg-light: #EDF3F7;
+            
+            --font-headings: 'Lora', serif;
+            --font-body: 'Inter', 'Noto Sans Tamil', sans-serif;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Top Header / Navigation Brand */
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid rgba(139, 115, 85, 0.15);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-mark {
+            background-color: var(--brand-primary);
+            color: #ffffff;
+            font-family: var(--font-headings);
+            font-weight: bold;
+            font-size: 20px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .brand-text h1 {
+            font-family: var(--font-headings);
+            color: var(--brand-primary);
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .brand-text span {
+            font-size: 11px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--brand-primary);
+        }
+
+        .nav-btn {
+            background-color: var(--brand-primary);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .nav-btn:hover {
+            background-color: var(--brand-primary-light);
+        }
+
+        /* Typography Helper Classes */
+        .tamil-text {
+            font-weight: 500;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: var(--font-headings);
+            font-size: 32px;
+            color: var(--brand-primary);
+            margin-bottom: 8px;
+        }
+
+        .section-title-tamil {
+            display: block;
+            font-size: 24px;
+            color: var(--text-main);
+            margin-top: 6px;
+            font-weight: 600;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 16px;
+            max-width: 700px;
+            margin: 0 auto 48px auto;
+        }
+
+        .section-subtitle-tamil {
+            display: block;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        /* Sections common styling */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(139, 115, 85, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(180deg, #ffffff 0%, var(--bg-page) 100%);
+            text-align: center;
+            padding: 100px 0 80px 0;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--green-bg-light);
+            color: var(--green-leaf);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 1px solid rgba(46, 90, 54, 0.15);
+        }
+
+        .hero h2 {
+            font-family: var(--font-headings);
+            font-size: 44px;
+            color: var(--brand-primary);
+            line-height: 1.2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h2 .tamil-title {
+            display: block;
+            font-size: 32px;
+            color: var(--text-main);
+            margin-top: 12px;
+            font-weight: 600;
+        }
+
+        .hero-desc {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 24px auto 40px auto;
+            line-height: 1.7;
+        }
+
+        .hero-desc p {
+            margin-bottom: 12px;
+        }
+
+        .hero-desc .tamil-paragraph {
+            display: block;
+            font-size: 16px;
+            color: var(--text-main);
+            border-top: 1px dashed rgba(139, 115, 85, 0.2);
+            padding-top: 12px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 14px 28px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: var(--transition);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .btn span.btn-sub {
+            font-size: 12px;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-top: 2px;
+        }
+
+        .btn-primary {
+            background-color: var(--green-leaf);
+            color: #ffffff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #24472b;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background-color: #ffffff;
+            color: var(--brand-primary);
+            border: 1px solid var(--brand-primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--brand-bg-light);
+            transform: translateY(-1px);
+        }
+
+        /* Section 2: How ParuvaKaala Helps */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .benefit-card {
+            background-color: #ffffff;
+            padding: 32px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(139, 115, 85, 0.1);
+            box-shadow: 0 4px 12px rgba(139, 115, 85, 0.03);
+            display: flex;
+            gap: 20px;
+            transition: var(--transition);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 115, 85, 0.06);
+            border-color: rgba(139, 115, 85, 0.2);
+        }
+
+        .benefit-icon-wrapper {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .benefit-icon-wrapper.green { background-color: var(--green-bg-light); color: var(--green-leaf); }
+        .benefit-icon-wrapper.soil { background-color: var(--brown-bg-light); color: var(--brown-soil); }
+        .benefit-icon-wrapper.blue { background-color: var(--blue-bg-light); color: var(--blue-sky); }
+        .benefit-icon-wrapper.maroon { background-color: var(--brand-bg-light); color: var(--brand-primary); }
+
+        .benefit-content h3 {
+            font-family: var(--font-headings);
+            font-size: 20px;
+            color: var(--brand-primary);
+            margin-bottom: 4px;
+        }
+
+        .benefit-content h3 .tamil-sub {
+            display: block;
+            font-size: 15px;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .benefit-content p {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        .benefit-content p .tamil-desc {
+            display: block;
+            margin-top: 8px;
+            font-size: 13.5px;
+            color: var(--text-main);
+            border-top: 1px dotted rgba(139, 115, 85, 0.15);
+            padding-top: 8px;
+        }
+
+        /* Section 3: Ancient Wisdom, Modern Science */
+        .split-section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .split-col {
+            background-color: #ffffff;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            border: 1px solid rgba(139, 115, 85, 0.1);
+            box-shadow: 0 4px 12px rgba(139, 115, 85, 0.02);
+        }
+
+        .split-col.wisdom {
+            border-left: 5px solid var(--brand-primary);
+        }
+
+        .split-col.science {
+            border-left: 5px solid var(--blue-sky);
+        }
+
+        .col-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        .wisdom .col-badge {
+            background-color: var(--brand-bg-light);
+            color: var(--brand-primary);
+        }
+
+        .science .col-badge {
+            background-color: var(--blue-bg-light);
+            color: var(--blue-sky);
+        }
+
+        .split-col h3 {
+            font-family: var(--font-headings);
+            font-size: 24px;
+            color: var(--text-main);
+            margin-bottom: 16px;
+        }
+
+        .split-col h3 .tamil-sub {
+            display: block;
+            font-size: 18px;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        .split-col p {
+            font-size: 15px;
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+
+        .split-col .tamil-desc {
+            display: block;
+            color: var(--text-main);
+            font-size: 14.5px;
+            border-top: 1px dashed rgba(139, 115, 85, 0.15);
+            padding-top: 12px;
+            margin-top: 12px;
+        }
+
+        /* Flow chart styling */
+        .flow-header {
+            text-align: center;
+            font-family: var(--font-headings);
+            font-size: 22px;
+            margin-bottom: 32px;
+            color: var(--brand-primary);
+        }
+
+        .flow-header .tamil-sub {
+            display: block;
+            font-size: 17px;
+            color: var(--text-main);
+            margin-top: 4px;
+        }
+
+        .flow-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            position: relative;
+        }
+
+        .flow-step {
+            background-color: #ffffff;
+            padding: 24px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border: 1px solid rgba(139, 115, 85, 0.15);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.01);
+            position: relative;
+        }
+
+        .flow-step-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--brand-primary);
+            color: #ffffff;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px auto;
+        }
+
+        .flow-step h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .flow-step h4 .tamil-sub {
+            display: block;
+            font-size: 12.5px;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+
+        .flow-step p {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.4;
+        }
+
+        /* Section 4: 16-Week Crop Plan */
+        .timeline-container {
+            background-color: #ffffff;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(139, 115, 85, 0.15);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-note {
+            background-color: var(--brown-bg-light);
+            border-left: 3px solid var(--brown-soil);
+            padding: 12px 16px;
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 32px;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .timeline-note .tamil-sub {
+            display: block;
+            margin-top: 4px;
+            color: var(--text-main);
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 10px;
+            bottom: 10px;
+            width: 2px;
+            background-color: var(--brown-bg-light);
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 24px;
+            position: relative;
+        }
+
+        .timeline-circle {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            border: 3px solid var(--brown-soil);
+            color: var(--brown-soil);
+            font-weight: bold;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            flex-shrink: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .timeline-item.active .timeline-circle {
+            border-color: var(--green-leaf);
+            color: var(--green-leaf);
+            background-color: var(--green-bg-light);
+        }
+
+        .timeline-content {
+            background-color: var(--bg-page);
+            padding: 20px;
+            border-radius: 8px;
+            flex-grow: 1;
+            border: 1px solid rgba(139, 115, 85, 0.08);
+        }
+
+        .timeline-content h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--brand-primary);
+            margin-bottom: 8px;
+        }
+
+        .timeline-content h4 .tamil-sub {
+            display: inline-block;
+            margin-left: 8px;
+            color: var(--text-main);
+            font-size: 14.5px;
+            font-weight: 500;
+        }
+
+        .timeline-content p {
+            font-size: 13.5px;
+            color: var(--text-light);
+        }
+
+        .timeline-content p .tamil-sub {
+            display: block;
+            margin-top: 6px;
+            color: var(--text-main);
+            border-top: 1px dotted rgba(139, 115, 85, 0.1);
+            padding-top: 6px;
+        }
+
+        /* Section 5: For Farmers: How to Use */
+        .steps-container {
+            max-width: 800px;
+            margin: 0 auto 48px auto;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 24px;
+            background-color: #ffffff;
+            border-radius: var(--border-radius);
+            padding: 24px;
+            border: 1px solid rgba(139, 115, 85, 0.12);
+            margin-bottom: 16px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.01);
+            align-items: flex-start;
+        }
+
+        .step-num {
+            width: 48px;
+            height: 48px;
+            background-color: var(--green-bg-light);
+            color: var(--green-leaf);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-text h4 {
+            font-size: 18px;
+            color: var(--brand-primary);
+            margin-bottom: 4px;
+        }
+
+        .step-text h4 .tamil-sub {
+            display: inline-block;
+            margin-left: 8px;
+            color: var(--text-main);
+            font-size: 15.5px;
+            font-weight: 600;
+        }
+
+        .step-text p {
+            font-size: 14.5px;
+            color: var(--text-light);
+        }
+
+        .step-text p .tamil-sub {
+            display: block;
+            margin-top: 6px;
+            color: var(--text-main);
+            font-size: 13.5px;
+            border-top: 1px dotted rgba(139, 115, 85, 0.1);
+            padding-top: 6px;
+        }
+
+        .center-cta {
+            text-align: center;
+        }
+
+        /* Section 6: For NGOs & Donors */
+        .ngo-card {
+            background: linear-gradient(135deg, #ffffff 0%, var(--brown-bg-light) 100%);
+            border: 1px solid rgba(139, 115, 85, 0.2);
+            border-radius: var(--border-radius);
+            padding: 48px;
+            box-shadow: 0 10px 30px rgba(139, 115, 85, 0.05);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .ngo-card h3 {
+            font-family: var(--font-headings);
+            font-size: 26px;
+            color: var(--brand-primary);
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .ngo-card h3 .tamil-sub {
+            display: block;
+            font-size: 20px;
+            color: var(--text-main);
+            margin-top: 4px;
+        }
+
+        .ngo-desc {
+            font-size: 15px;
+            color: var(--text-light);
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 32px auto;
+            line-height: 1.7;
+        }
+
+        .ngo-desc .tamil-desc {
+            display: block;
+            margin-top: 12px;
+            color: var(--text-main);
+            border-top: 1px dashed rgba(139, 115, 85, 0.2);
+            padding-top: 12px;
+        }
+
+        .ngo-points {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .ngo-point {
+            background-color: #ffffff;
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid rgba(139, 115, 85, 0.12);
+        }
+
+        .ngo-point h4 {
+            font-size: 15px;
+            color: var(--brand-primary);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .ngo-point h4 .tamil-sub {
+            display: block;
+            font-size: 13px;
+            color: var(--text-main);
+            margin-top: 2px;
+        }
+
+        .ngo-point p {
+            font-size: 12.5px;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .ngo-point p .tamil-sub {
+            display: block;
+            margin-top: 6px;
+            font-size: 12px;
+            color: var(--text-main);
+            border-top: 1px dotted rgba(139, 115, 85, 0.1);
+            padding-top: 6px;
+        }
+
+        .ngo-ctas {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        /* Section 7: FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        details {
+            background-color: #ffffff;
+            border-radius: 8px;
+            border: 1px solid rgba(139, 115, 85, 0.15);
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        details[open] {
+            border-color: var(--brand-primary);
+            box-shadow: 0 4px 10px rgba(139, 115, 85, 0.05);
+        }
+
+        summary {
+            padding: 18px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--brand-primary);
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "+";
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+
+        details[open] summary::after {
+            content: "−";
+        }
+
+        summary .tamil-sub {
+            display: block;
+            font-size: 14px;
+            color: var(--text-main);
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        .faq-answer {
+            padding: 0 24px 20px 24px;
+            font-size: 14.5px;
+            color: var(--text-light);
+            border-top: 1px solid rgba(139, 115, 85, 0.08);
+            padding-top: 16px;
+        }
+
+        .faq-answer .tamil-sub {
+            display: block;
+            margin-top: 8px;
+            color: var(--text-main);
+            border-top: 1px dotted rgba(139, 115, 85, 0.1);
+            padding-top: 8px;
+        }
+
+        /* Section 8: Contact & Support */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 55% 40%;
+            gap: 5%;
+            align-items: flex-start;
+        }
+
+        .contact-info h3 {
+            font-family: var(--font-headings);
+            font-size: 26px;
+            color: var(--brand-primary);
+            margin-bottom: 12px;
+        }
+
+        .contact-info h3 .tamil-sub {
+            display: block;
+            font-size: 20px;
+            color: var(--text-main);
+            margin-top: 4px;
+        }
+
+        .contact-info p {
+            font-size: 15px;
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+
+        .contact-info p .tamil-sub {
+            display: block;
+            margin-top: 8px;
+            color: var(--text-main);
+        }
+
+        .contact-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-item {
+            background-color: #ffffff;
+            border: 1px solid rgba(139, 115, 85, 0.15);
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .contact-item-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: var(--brown-bg-light);
+            color: var(--brown-soil);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-item-details strong {
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            letter-spacing: 0.5px;
+        }
+
+        .contact-item-details span {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .contact-item-details a {
+            color: var(--brand-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-item-details a:hover {
+            text-decoration: underline;
+        }
+
+        .green-callout-card {
+            background-color: var(--green-bg-light);
+            border: 1px solid rgba(46, 90, 54, 0.2);
+            padding: 24px;
+            border-radius: var(--border-radius);
+            color: var(--green-leaf);
+            text-align: center;
+        }
+
+        .green-callout-card h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .green-callout-card p {
+            font-size: 13.5px;
+            margin: 0;
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2b1f1d;
+            color: #FAF8F5;
+            padding: 40px 0;
+            font-size: 13px;
+            border-top: 5px solid var(--brand-primary);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-copyright {
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #FAF8F5;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--brand-primary-light);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            .split-section {
+                grid-template-columns: 1fr;
+            }
+            .flow-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .ngo-points {
+                grid-template-columns: 1fr;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 12px 0;
+            }
+            .header-content {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+            .hero {
+                padding: 60px 0 40px 0;
+            }
+            .hero h2 {
+                font-size: 28px;
+            }
+            .hero h2 .tamil-title {
+                font-size: 22px;
+            }
+            .hero-desc {
+                font-size: 15px;
+                margin: 16px auto 28px auto;
+            }
+            .hero-desc .tamil-paragraph {
+                font-size: 14px;
+            }
+            .flow-steps {
+                grid-template-columns: 1fr;
+            }
+            .ngo-card {
+                padding: 24px;
+            }
+            .ngo-ctas {
+                flex-direction: column;
+            }
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="brand">
+                <div class="logo-mark">S</div>
+                <div class="brand-text">
+                    <h1>SIVA FOUNDATION</h1>
+                    <span>Dharma • Seva • Upliftment</span>
+                </div>
+            </a>
+            <div class="nav-links">
+                <a href="https://sivafoundation.org.in" class="nav-link">Home</a>
+                <a href="https://sivafoundation.org.in/volunteer" class="nav-link">Volunteer</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="index.html" class="nav-btn">Launch PWA</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section 1: Hero / Introduction -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                🌾 Farmer Initiative / விவசாய முயற்சி
+            </div>
+            <h2>
+                Aligning Ancient Cosmos and Modern Science for Our Farmers
+                <span class="tamil-title">உழவர்களின் நல்வாழ்வுக்காக... பழங்கால ஞானமும் நவீன தொழில்நுட்பமும்!</span>
+            </h2>
+            <div class="hero-desc">
+                <p>
+                    Built under the wings of Siva Foundation, ParuvaKaala is a free mobile assistant that helps farmers make wise decisions. By blending traditional Tamil Panchangam calendar cycles with real-time satellite insights, it generates a weekly, step-by-step guidance plan tailored for your local soil and climate.
+                </p>
+                <p class="tamil-paragraph">
+                    சிவா அறக்கட்டளையின் சேவையின் ஒரு பகுதியாக உருவாக்கப்பட்டுள்ள "பருவகாலம்" என்பது உழவர்களுக்கான ஒரு இலவச மொபைல் உதவியாளர் ஆகும். இது பாரம்பரிய தமிழ் பஞ்சாங்கத்தின் கணக்கீடுகளையும், செயற்கைக்கோள் வழங்கும் மண்ணின் நேரடித் தரவுகளையும் இணைத்து, உங்கள் மாவட்டத்தின் வானிலைக்கு ஏற்ப வாராந்திர வழிகாட்டுதலை எளிய முறையில் வழங்குகிறது.
+                </p>
+            </div>
+            <div class="hero-ctas">
+                <a href="index.html" class="btn btn-primary">
+                    <strong>Launch Farmer Assistant</strong>
+                    <span class="btn-sub">பருவகால உதவியாளரைத் தொடங்கு</span>
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <strong>Contact Siva Foundation</strong>
+                    <span class="btn-sub">சிவா அறக்கட்டளையை தொடர்பு கொள்ளவும்</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: How ParuvaKaala Helps Farmers -->
+    <section id="benefits">
+        <div class="container">
+            <h2 class="section-title">
+                How ParuvaKaala Empowers You
+                <span class="section-title-tamil">பருவகாலம் உழவர்களுக்கு எவ்வாறு துணைநிற்கிறது?</span>
+            </h2>
+            <div class="section-subtitle">
+                Practical, hyper-local guidance at every stage of cultivation.
+                <span class="section-subtitle-tamil">பயிர் சாகுபடியின் ஒவ்வொரு கட்டத்திலும் எளிமையான மற்றும் பயனுள்ள ஆலோசனைகள்.</span>
+            </div>
+
+            <div class="benefits-grid">
+                <!-- Benefit 1 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon-wrapper maroon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>
+                            Auspicious Sowing Timelines
+                            <span class="tamil-sub">உகந்த விதைப்பு காலங்கள்</span>
+                        </h3>
+                        <p>
+                            Plan your sowing dates aligned with both traditional, favorable lunar cycles (Tithi and Nakshatra) and current local climate patterns.
+                            <span class="tamil-desc">நமது பாரம்பரிய பஞ்சாங்கத்தின் நல்ல திதி, நட்சத்திர காலங்களையும், தற்போதைய தட்பவெப்ப நிலைகளையும் ஒருங்கிணைத்து விதைப்பு நாட்களைச் சரியாகத் திட்டமிடுங்கள்.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon-wrapper green">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>
+                            Guided Weekly Care
+                            <span class="tamil-sub">வாராந்திர வழிகாட்டுதல்</span>
+                        </h3>
+                        <p>
+                            Understand exactly when to water, weed, feed nutrients, and prepare for harvest, broken down step-by-step.
+                            <span class="tamil-desc">பயிர்களுக்கு நீர் பாய்ச்சுவது, களை எடுப்பது, இயற்கை உரமிடுவது மற்றும் அறுவடைக்குத் தயாராவது எப்போது என்பதை வாரம் வாரியாக எளிய முறையில் தெரிந்துகொள்ளுங்கள்.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon-wrapper blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M12 6v6l4 2"></path></svg>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>
+                            Satellite Risk Reduction
+                            <span class="tamil-sub">செயற்கைக்கோள் வழி பாதுகாப்பு</span>
+                        </h3>
+                        <p>
+                            Stay ahead of unexpected weather. The system uses live satellite scans to check soil moisture and crop greenness (NDVI).
+                            <span class="tamil-desc">வானிலை மாற்றங்களில் இருந்து பயிர்களைப் பாதுகாக்கவும். விண்வெளியில் இருந்து எடுக்கப்படும் செயற்கைக்கோள் படங்கள் மூலம் மண்ணின் ஈரம் மற்றும் பயிர் பசுமைத் தன்மையை இது கணக்கிடுகிறது.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Benefit 4 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon-wrapper soil">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>
+                            Made for Rural Mobile Users
+                            <span class="tamil-sub">மொபைலில் எளிதாகப் பயன்படுத்தலாம்</span>
+                        </h3>
+                        <p>
+                            No complex language or confusing screens. Simple Tamil text, clear buttons, and low data usage designed to work on basic smartphones.
+                            <span class="tamil-desc">கடினமான தொழில்நுட்ப வார்த்தைகள் இல்லை. எளிய தமிழ், தெளிவான எழுத்துக்கள் மற்றும் குறைந்த இணைய வேகத்திலும் மிகச் சிறப்பாகச் செயல்படும் வடிவமைப்பு.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Ancient Wisdom, Modern Science -->
+    <section id="philosophy">
+        <div class="container">
+            <h2 class="section-title">
+                The Union of Tradition and Technology
+                <span class="section-title-tamil">பாரம்பரியமும் நவீன தொழில்நுட்பமும் இணையும் புள்ளி</span>
+            </h2>
+            <div class="section-subtitle">
+                Harmonizing ancient mathematical cosmology with modern satellite observation.
+                <span class="section-subtitle-tamil">விண்வெளி ஆராய்ச்சியும், நமது முன்னோர்களின் கணித ஜோதிட சாஸ்திரமும் கைக்கோர்க்கும் இடம்.</span>
+            </div>
+
+            <div class="split-section">
+                <!-- Column 1 -->
+                <div class="split-col wisdom">
+                    <div class="col-badge">Ancient Wisdom / பண்டைய ஞானம்</div>
+                    <h3>
+                        Solar & Lunar Cycles (Surya Siddhanta)
+                        <span class="tamil-sub">சூரிய-சந்திர சுழற்சிகள் (சூரிய சித்தாந்தம்)</span>
+                    </h3>
+                    <p>
+                        Traditional Tamil agriculture has long recognized that lunar phases (Shukla Paksha/Krishna Paksha) influence the movement of sap within plants and the behavior of pests. 
+                    </p>
+                    <span class="tamil-desc">
+                        வளர்பிறை (சுக்ல பட்சம்) மற்றும் தேய்பிறை (கிருஷ்ண பட்சம்) காலங்கள் தாவரங்களின் நீர் சுழற்சியிலும், பூச்சிகளின் பெருக்கத்திலும் பெரும் தாக்கத்தை ஏற்படுத்துகின்றன என்பதை நம் முன்னோர்கள் உணர்ந்திருந்தனர். இந்த வானியல் நகர்வுகளைப் பருவகாலம் துல்லியமாகக் கணக்கிட்டு, விவசாயத்திற்கு ஏற்ற இயற்கை நாட்களைக் காட்டுகிறது.
+                    </span>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="split-col science">
+                    <div class="col-badge">Modern Science / நவீன அறிவியல்</div>
+                    <h3>
+                        Space Observation (Sentinel Satellites)
+                        <span class="tamil-sub">செயற்கைக்கோள் கண்காணிப்பு (சென்டினல் தரவுகள்)</span>
+                    </h3>
+                    <p>
+                        European Sentinel satellites pass over Tamil Nadu, capturing light reflections that show the vegetation index (NDVI) and soil wetness.
+                    </p>
+                    <span class="tamil-desc">
+                        விண்வெளியில் வலம் வரும் சென்டினல் செயற்கைக்கோள்கள், பயிர்களின் பசுமைத் தன்மையையும் (NDVI), மண்ணின் ஈரப்பதத்தையும் துல்லியமாகப் படம் பிடிக்கின்றன. இந்த நவீனத் தரவுகளைக் கொண்டு தற்போதைய நிலத்தின் உண்மையான தேவையை அறிந்து செயல்பட பருவகாலம் உதவுகிறது.
+                    </span>
+                </div>
+            </div>
+
+            <!-- Flow chart steps -->
+            <h3 class="flow-header">
+                How it works in 4 simple steps:
+                <span class="flow-header-tamil tamil-text">இது செயல்படும் 4 எளிய படிகள்:</span>
+            </h3>
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <div class="flow-step-num">1</div>
+                    <h4>Reads Location <span class="tamil-sub">இடத்தைக் கண்டறிதல்</span></h4>
+                    <p>Identify your district to fetch local weather.</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step-num">2</div>
+                    <h4>Calculates Cosmos <span class="tamil-sub">பஞ்சாங்கக் கணக்கீடு</span></h4>
+                    <p>Calculates Surya Siddhanta for your dates.</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step-num">3</div>
+                    <h4>Scans Satellites <span class="tamil-sub">செயற்கைக்கோள் ஆய்வு</span></h4>
+                    <p>Retrieves soil moisture readings for your region.</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step-num">4</div>
+                    <h4>Generates Plan <span class="tamil-sub">வழிகாட்டி உருவாக்கம்</span></h4>
+                    <p>Compiles a custom 16-week timeline for your crop.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Your 16-Week Crop Plan -->
+    <section id="timeline">
+        <div class="container">
+            <h2 class="section-title">
+                The 16-Week Journey: From Soil to Harvest
+                <span class="section-title-tamil">16 வாரப் பயணம்: நிலம் தயாரிப்பு முதல் அறுவடை வரை</span>
+            </h2>
+            <div class="section-subtitle">
+                A holistic view of the general growth cycle generated by the ParuvaKaala framework.
+                <span class="section-subtitle-tamil">பருவகாலத் தொழில்நுட்பம் தயாரித்து வழங்கும் ஒரு பொதுவான பயிர் சாகுபடி காலவரிசை.</span>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-note">
+                    <strong>Note:</strong> The phases below represent a general guiding timeline. Crop-specific intelligence (such as paddy, groundnut, or millets) is continuously updated in our framework.
+                    <span class="tamil-sub"><strong>குறிப்பு:</strong> கீழே கொடுக்கப்பட்டுள்ள கால அளவு ஒரு பொதுவான வழிகாட்டுதலே ஆகும். நெல், நிலக்கடலை போன்ற தனித்தனி பயிர்களுக்கான ஆலோசனைகள் தொடர்ந்து மேம்படுத்தப்பட்டு வருகின்றன.</span>
+                </div>
+
+                <div class="timeline">
+                    <!-- Item 1 -->
+                    <div class="timeline-item active">
+                        <div class="timeline-circle">W 1-2</div>
+                        <div class="timeline-content">
+                            <h4>Land Preparation <span class="tamil-sub">நிலம் தயாரித்தல்</span></h4>
+                            <p>
+                                Focus on clearing the field, organic ploughing, and preparing the soil beds in harmony with auspicious solar transits.
+                                <span class="tamil-sub">இயற்கை உழவு செய்தல், நிலத்தைச் சீரமைத்தல் மற்றும் நல்ல சூரிய நகர்வுகளின் நாளில் மண்ணை விதைப்புக்குத் தயார் செய்தல்.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-circle">W 3-4</div>
+                        <div class="timeline-content">
+                            <h4>Sowing & Germination <span class="tamil-sub">விதைப்பு மற்றும் முளைப்பு</span></h4>
+                            <p>
+                                Sowing seeds during optimal lunar phases (sap-upward flow) to encourage healthy, deep roots.
+                                <span class="tamil-sub">தாவரங்களில் சாறு மேல்நோக்கிப் பாயும் நல்ல வளர்பிறை நாட்களில் விதைகளை விதைத்து, ஆரோக்கியமான வேர்கள் வளர வழிவகுத்தல்.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-circle">W 5-8</div>
+                        <div class="timeline-content">
+                            <h4>Water & Nutrient Management <span class="tamil-sub">நீர் மற்றும் ஊட்டச்சத்து மேலாண்மை</span></h4>
+                            <p>
+                                Applying organic manures and irrigating crops based on weekly satellite-derived soil moisture scans.
+                                <span class="tamil-sub">செயற்கைக்கோள் காட்டும் மண்ணின் ஈரப்பதத்திற்கு ஏற்ப நீர் பாய்ச்சுதல் மற்றும் வாராந்திர இயற்கை ஊட்டச்சத்துக்களை வழங்குதல்.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="timeline-item">
+                        <div class="timeline-circle">W 9-12</div>
+                        <div class="timeline-content">
+                            <h4>Weeding & Crop Protection <span class="tamil-sub">களை மற்றும் பயிர் பாதுகாப்பு</span></h4>
+                            <p>
+                                Managing unwanted weeds and biological pest controls during unfavorable lunar cycles for pest breeding.
+                                <span class="tamil-sub">பூச்சிகள் அதிகம் இனப்பெருக்கம் செய்யாத சந்திர நாட்களைக் கணித்து, பயிர்களைக் கண்காணித்து களை எடுத்தல் மற்றும் இயற்கை பூச்சி விரட்டி தெளித்தல்.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="timeline-item">
+                        <div class="timeline-circle">W 13-16</div>
+                        <div class="timeline-content">
+                            <h4>Harvest Readiness & Drying <span class="tamil-sub">அறுவடை மற்றும் காயவைத்தல்</span></h4>
+                            <p>
+                                Evaluating crop greenness and moisture levels for final harvesting, cutting, and safe traditional storage.
+                                <span class="tamil-sub">பயிர்களின் முதிர்ச்சி மற்றும் ஈரப்பதம் ஆகியவற்றைச் சரிபார்த்து, அறுவடை செய்து, பாதுகாப்பான முறையில் தானியங்களைச் சேமித்தல்.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: For Farmers: How to Use -->
+    <section id="how-to-use">
+        <div class="container">
+            <h2 class="section-title">
+                Easy Steps to Start Using ParuvaKaala
+                <span class="section-title-tamil">பருவகாலத்தைப் பயன்படுத்தும் எளிய வழிமுறைகள்</span>
+            </h2>
+            <div class="section-subtitle">
+                Designed for simplicity. Follow these steps on your mobile phone:
+                <span class="section-subtitle-tamil">உங்கள் மொபைல் போனில் எளிதாகப் பயன்படுத்த சில எளிய படிகள்:</span>
+            </div>
+
+            <div class="steps-container">
+                <!-- Step 1 -->
+                <div class="step-item">
+                    <div class="step-num">1</div>
+                    <div class="step-text">
+                        <h4>Open the App <span class="tamil-sub">செயலியைத் திறக்கவும்</span></h4>
+                        <p>
+                            Click the 'Launch Farmer Assistant' button on this page to open the free application on your mobile browser.
+                            <span class="tamil-sub">இந்தப் பக்கத்தில் உள்ள 'பருவகால உதவியாளரைத் தொடங்கு' என்ற பொத்தானை அழுத்தி, இணையதளத்தைத் திறக்கவும்.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-item">
+                    <div class="step-num">2</div>
+                    <div class="step-text">
+                        <h4>Select Location <span class="tamil-sub">இடத்தைத் தேர்ந்தெடுக்கவும்</span></h4>
+                        <p>
+                            Choose 'Tamil Nadu' and select your specific home district from the list.
+                            <span class="tamil-sub">'தமிழ்நாடு' மற்றும் உங்களது சொந்த மாவட்டத்தைப் பட்டியலில் இருந்து தேர்ந்தெடுக்கவும்.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-item">
+                    <div class="step-num">3</div>
+                    <div class="step-text">
+                        <h4>Select Crop <span class="tamil-sub">பயிரைத் தேர்ந்தெடுக்கவும்</span></h4>
+                        <p>
+                            Select the crop you wish to grow (or choose 'General guidance' for general farming timelines).
+                            <span class="tamil-sub">நீங்கள் பயிரிட விரும்பும் பயிரைத் தேர்ந்தெடுக்கவும் (அல்லது பொதுவான ஆலோசனையைப் பெற 'பொது வழிகாட்டுதல்' என்பதைத் தேர்வு செய்யவும்).</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="step-item">
+                    <div class="step-num">4</div>
+                    <div class="step-text">
+                        <h4>View Crop Plan <span class="tamil-sub">பயிர் திட்டத்தைப் பார்க்கவும்</span></h4>
+                        <p>
+                            Scroll through your custom 16-week calendar to see the recommended actions for this current week.
+                            <span class="tamil-sub">உங்களுக்கான 16 வார கால அட்டவணையில் தற்போதைய வாரத்திற்கு என்ன செய்ய வேண்டும் என்ற ஆலோசனையைப் பார்க்கவும்.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="step-item">
+                    <div class="step-num">5</div>
+                    <div class="step-text">
+                        <h4>Save Instructions <span class="tamil-sub">குறிப்பு எடுத்துக்கொள்ளவும்</span></h4>
+                        <p>
+                            Take a screenshot of the weekly recommendations or write down the key dates so you can refer to them offline.
+                            <span class="tamil-sub">வாராந்திர ஆலோசனைகளை உங்கள் மொபைலில் ஸ்கிரீன்ஷாட் எடுத்து வைத்துக்கொள்ளலாம் அல்லது முக்கிய நாட்களைக் குறித்து வைத்துக்கொள்ளலாம்.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="step-item">
+                    <div class="step-num">6</div>
+                    <div class="step-text">
+                        <h4>Get Human Support <span class="tamil-sub">உதவி பெறலாம்</span></h4>
+                        <p>
+                            If you have trouble reading the screen, visit the nearest Siva Foundation service center or contact our volunteers.
+                            <span class="tamil-sub">மொபைலைப் பயன்படுத்துவதில் சிரமம் இருந்தால், அருகில் உள்ள சிவா அறக்கட்டளை சேவை மையத்தையோ அல்லது எங்களது தன்னார்வலர்களையோ தொடர்புகொண்டு உதவி பெறலாம்.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="center-cta">
+                <a href="index.html" class="btn btn-primary" style="padding: 16px 36px; font-size: 18px;">
+                    <strong>Launch Farmer Assistant</strong>
+                    <span class="btn-sub">பருவகால உதவியாளரைத் தொடங்கு</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: For NGOs & Donors -->
+    <section id="support">
+        <div class="container">
+            <h2 class="section-title">
+                Uplifting Rural Communities Through Dharma and Seva
+                <span class="section-title-tamil">அறப்பணியில் இணையுங்கள்</span>
+            </h2>
+            <div class="section-subtitle">
+                How your support helps us bring the power of smart farming to small, marginal families.
+                <span class="section-subtitle-tamil">விவசாயக் குடும்பங்களுக்கு இந்த தொழில்நுட்பம் சென்றடைய உங்களால் இயன்ற ஆதரவை வழங்குங்கள்.</span>
+            </div>
+
+            <div class="ngo-card">
+                <h3>
+                    A Path of Service for Our Food Providers
+                    <span class="tamil-sub">விவசாயிகளுக்குச் செய்யும் சேவை தார்மீகக் கடமை</span>
+                </h3>
+                <div class="ngo-desc">
+                    <p>
+                        At Siva Foundation, we believe that serving our farmers is serving humanity. By providing small-scale farmers with free access to advanced satellite and astronomical calculation knowledge, we protect their livelihoods, reduce crop failures, and revive ancient agrarian wisdom.
+                    </p>
+                    <p class="tamil-desc">
+                        உழவர்களுக்குச் செய்யும் சேவை இறைவனுக்குச் செய்யும் சேவை என்ற தார்மீகக் கொள்கையின் அடிப்படையில் சிவா அறக்கட்டளை இயங்குகிறது. சிறு விவசாயிகளுக்குச் செயற்கைக்கோள் தரவுகளையும், வானியல் அறிவையும் இலவசமாக வழங்குவதன் மூலம் அவர்களது வாழ்வாதாரத்தைக் காக்கவும், விவசாய இழப்புகளைத் தடுக்கவும் நாம் பாடுபடுகிறோம்.
+                    </p>
+                </div>
+
+                <div class="ngo-points">
+                    <!-- Point 1 -->
+                    <div class="ngo-point">
+                        <h4>Sponsor Training Camps <span class="tamil-sub">விழிப்புணர்வு முகாம்கள்</span></h4>
+                        <p>
+                            Help us fund physical village-level workshops where local youth and farmers learn to use this mobile tool.
+                            <span class="tamil-sub">கிராமப்புறங்களில் உழவர்களுக்கு இந்தச் செயலியைப் பயன்படுத்தக் கற்றுக்கொடுக்கும் நேரடிப் பயிற்சி முகாம்களை நடத்த ஆதரவு தாரீர்.</span>
+                        </p>
+                    </div>
+
+                    <!-- Point 2 -->
+                    <div class="ngo-point">
+                        <h4>Fund Tech Infrastructure <span class="tamil-sub">தொழில்நுட்ப உதவி</span></h4>
+                        <p>
+                            Support the cost of satellite data processing, server hosting, and building offline SMS alert systems.
+                            <span class="tamil-sub">செயற்கைக்கோள் தரவுச் செயலாக்கம் மற்றும் சாதாரண மொபைல் வைத்துள்ள உழவர்களுக்கு எஸ்.எம்.எஸ் அனுப்பும் கட்டமைப்புக்கு உதவலாம்.</span>
+                        </p>
+                    </div>
+
+                    <!-- Point 3 -->
+                    <div class="ngo-point">
+                        <h4>Spread the Word <span class="tamil-sub">தன்னார்வலராக இணையலாம்</span></h4>
+                        <p>
+                            Partner with us as a local NGO, agricultural co-operative, or community volunteer in your taluk.
+                            <span class="tamil-sub">உங்கள் பகுதியில் உள்ள விவசாயக் குழுக்களிடம் பருவகாலம் செயலியைப் பரப்ப தன்னார்வலராகவோ அல்லது கூட்டாளராகவோ இணையுங்கள்.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="ngo-ctas">
+                    <a href="https://sivafoundation.org.in/donate" class="btn btn-primary">
+                        <strong>Support This Initiative (Donate)</strong>
+                        <span class="btn-sub">இந்த நற்பணிக்கு நிதியுதவி அளிக்கவும்</span>
+                    </a>
+                    <a href="https://sivafoundation.org.in/volunteer" class="btn btn-secondary">
+                        <strong>Join as a Volunteer</strong>
+                        <span class="btn-sub">தன்னார்வலராக இணையுங்கள்</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: FAQ -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">
+                Frequently Asked Questions
+                <span class="section-title-tamil">அடிக்கடி கேட்கப்படும் கேள்விகள்</span>
+            </h2>
+            <div class="section-subtitle">
+                Clear answers for farmers and supporters.
+                <span class="section-subtitle-tamil">உழவர்கள் மற்றும் ஆதரவாளர்களின் சந்தேகங்களுக்கான தெளிவான விளக்கங்கள்.</span>
+            </div>
+
+            <div class="faq-container">
+                <!-- FAQ 1 -->
+                <details>
+                    <summary>
+                        Is ParuvaKaala free for farmers to use?
+                        <span class="tamil-sub">பруவகாலம் செயலியைப் பயன்படுத்த கட்டணம் ஏதேனும் செலுத்த வேண்டுமா?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        Yes, it is 100% free. Siva Foundation provides this tool as a service (Seva) to empower rural communities. There are no ads, subscription fees, or hidden costs.
+                        <span class="tamil-sub">இல்லை, இது முற்றிலும் இலவசம். சிவா அறக்கட்டளை கிராமப்புற உழவர்களின் நல்வாழ்வுக்காக இந்தச் சேவையை எவ்விதக் கட்டணமும் இன்றி வழங்குகிறது. இதில் விளம்பரங்களோ அல்லது மறைமுகக் கட்டணங்களோ இல்லை.</span>
+                    </div>
+                </details>
+
+                <!-- FAQ 2 -->
+                <details>
+                    <summary>
+                        Do I need a constant internet connection to use it?
+                        <span class="tamil-sub">இதைப் பயன்படுத்த எப்போதும் இணைய இணைப்பு (Internet) தேவையா?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        You need the internet to open the page and generate your 16-week crop plan. Once loaded, you can take a screenshot of your weekly plan or write it down. It is designed to consume very little mobile data.
+                        <span class="tamil-sub">உங்களது 16 வாரப் பயிர் திட்டத்தைப் பெற்றுக் கொள்ளும் போது மட்டும் இணைய வசதி தேவை. அதன் பிறகு, நீங்கள் அதை உங்கள் மொபைலில் ஸ்கிரீன்ஷாட் எடுத்து வைத்துக்கொண்டு இணையம் இல்லாமலேயே பயன்படுத்தலாம்.</span>
+                    </div>
+                </details>
+
+                <!-- FAQ 3 -->
+                <details>
+                    <summary>
+                        Will it work on a basic Android phone?
+                        <span class="tamil-sub">இது சாதாரண ஆண்ட்ராய்டு (Android) மொபைல் போன்களில் வேலை செய்யுமா?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        Yes. ParuvaKaala is built as a lightweight Progressive Web App (PWA). It is optimized to load quickly on low-cost smartphones and older mobile browsers.
+                        <span class="tamil-sub">ஆம், வேலை செய்யும். பருவகாலம் மிகவும் எளிமையான முறையில் வடிவகைக்கப்பட்டுள்ளது. குறைந்த விலையுள்ள ஸ்மார்ட்போன்களிலும், பழைய மொபைல் பிரவுசர்களிலும் இது மிக வேகமாக இயங்கும்.</span>
+                    </div>
+                </details>
+
+                <!-- FAQ 4 -->
+                <details>
+                    <summary>
+                        How accurate are these crop plans and predictions?
+                        <span class="tamil-sub">இந்த வழிகாட்டுதல்கள் மற்றும் கணிப்புகள் எவ்வளவு துல்லியமானவை?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        ParuvaKaala combines verified historical math from Surya Siddhanta and direct satellite observations. While it provides excellent scientific and traditional guidance, it cannot guarantee weather outcomes or final crop yields. It should be used as a helpful guide alongside your local knowledge.
+                        <span class="tamil-sub">பருவகாலம் பாரம்பரிய சூரிய சித்தாந்தக் கணக்கீடுகளையும் நேரடி செயற்கைக்கோள் படங்களையும் அடிப்படையாகக் கொண்டது. இது விவசாயிகளுக்கு மிகச் சிறந்த வழிகாட்டியாக இருக்குமே தவிர, விளைச்சலுக்கு 100% உத்தரவாதம் அளிக்க முடியாது.</span>
+                    </div>
+                </details>
+
+                <!-- FAQ 5 -->
+                <details>
+                    <summary>
+                        Will it work for my specific crop?
+                        <span class="tamil-sub">இது எனது குறிப்பிட்ட பயிருக்கும் பொருந்துமா?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        The current version provides general crop cycle timelines suitable for major seasonal crops in Tamil Nadu. We are actively expanding the database to include crop-specific intelligence for paddy, groundnut, and millets.
+                        <span class="tamil-sub">தற்போதைய பதிப்பில் தமிழ்நாட்டின் முக்கியப் பயிர்களுக்கான பொதுவான கால அட்டவணைகள் உள்ளன. நெல், மணிலா, கம்பு போன்ற குறிப்பிட்ட பயிர்களுக்கான தனித்துவமான வழிகாட்டுதல்கள் விரைவில் சேர்க்கப்பட உள்ளன.</span>
+                    </div>
+                </details>
+
+                <!-- FAQ 6 -->
+                <details>
+                    <summary>
+                        Who should I contact if I do not understand the mobile app instructions?
+                        <span class="tamil-sub">எனக்கு இந்தச் செயலியைப் பயன்படுத்தத் தெரியவில்லை என்றால் யாரைத் தொடர்பு கொள்ள வேண்டும்?</span>
+                    </summary>
+                    <div class="faq-answer">
+                        You can call our Siva Foundation support line or visit our volunteers. We have dedicated community volunteers in rural districts who are happy to guide you step-by-step.
+                        <span class="tamil-sub">நீங்கள் எங்களது சிவா அறக்கட்டளை உதவி எண்ணை அழைக்கலாம் அல்லது எங்களது தன்னார்வலர்களை நேரடியாக அணுகலாம். உழவர்களுக்கு உதவவே கிராமப்புறங்களில் எங்கள் தன்னார்வலர்கள் காத்திருக்கிறார்கள்.</span>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Contact & Support -->
+    <section id="contact" style="background-color: #ffffff;">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>
+                        Connect with Siva Foundation
+                        <span class="tamil-sub">சிவா அறக்கட்டளையைத் தொடர்பு கொள்ளவும்</span>
+                    </h3>
+                    <p>
+                        Whether you are a farmer needing help setting up ParuvaKaala on your phone, or a volunteer wishing to support our mission of agricultural Seva, we welcome you with open arms.
+                        <span class="tamil-sub">பருவகாலம் செயலியைப் பயன்படுத்துவதில் உதவி தேவைப்படும் விவசாயியாக இருந்தாலும், அல்லது எங்களது தர்மப் பணியில் இணைய விரும்பும் நல்லுள்ளங்களாக இருந்தாலும், உங்களை அன்போடு வரவேற்கிறோம்.</span>
+                    </p>
+
+                    <div class="green-callout-card">
+                        <h4>விவசாயப் பெருமக்கள் தங்களுக்குத் தேவையான உதவிகளுக்கு எந்நேரமும் எங்களைத் தொடர்பு கொள்ளலாம்!</h4>
+                        <p>Farmers can contact us anytime for support and step-by-step guidance on their mobile screens.</p>
+                    </div>
+                </div>
+
+                <div class="contact-cards">
+                    <!-- Office Card -->
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        </div>
+                        <div class="contact-item-details">
+                            <strong>Office Address / முகவரி</strong>
+                            <span>Siva Foundation Office, Avinashi Road, Coimbatore, Tamil Nadu, 641018</span>
+                        </div>
+                    </div>
+
+                    <!-- Phone Card -->
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </div>
+                        <div class="contact-item-details">
+                            <strong>Helpline / தொலைபேசி எண்</strong>
+                            <span><a href="tel:+914428151234">+91 44 2815 1234</a></span>
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp Card -->
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                        </div>
+                        <div class="contact-item-details">
+                            <strong>WhatsApp Support / வாட்ஸ்அப்</strong>
+                            <span><a href="https://wa.me/919444012345" target="_blank">+91 94440 12345</a></span>
+                        </div>
+                    </div>
+
+                    <!-- Email Card -->
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </div>
+                        <div class="contact-item-details">
+                            <strong>Email Address / மின்னஞ்சல்</strong>
+                            <span><a href="mailto:contact@sivafoundation.org.in">contact@sivafoundation.org.in</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-copyright">
+                &copy; 2026 Siva Foundation. All rights reserved. Registered Public Charitable Trust.
+            </div>
+            <div class="footer-links">
+                <a href="https://sivafoundation.org.in/privacy">Privacy Policy</a>
+                <a href="https://sivafoundation.org.in/terms">Terms of Use</a>
+                <a href="https://github.com/SivaArulveli/ParuvaKaala">ParuvaKaala Project</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

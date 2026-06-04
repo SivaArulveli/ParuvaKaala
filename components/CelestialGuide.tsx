@@ -23,15 +23,15 @@ export default function CelestialGuide({ plan, language }: CelestialGuideProps) 
   const isWaxing = true; // For demonstration/mock purposes
 
   return (
-    <Card className="bg-zinc-900/40 backdrop-blur-md border-white/5 shadow-2xl rounded-3xl overflow-hidden">
+    <Card className="bg-white/40 backdrop-blur-md border-black/5 shadow-2xl rounded-3xl overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent pointer-events-none" />
       
       <CardHeader className="pb-2">
-        <CardTitle className="text-lg font-black text-zinc-100 flex items-center gap-2">
+        <CardTitle className="text-lg font-black text-brand-text flex items-center gap-2">
           <Moon className="text-amber-400" size={20} />
           {language === 'en' ? 'Surya Siddhanta Astronomical Guide' : 'சூர்ய சித்தாந்த பஞ்சாங்க வழிகாட்டி'}
         </CardTitle>
-        <p className="text-xs text-zinc-500 font-medium">
+        <p className="text-xs text-brand-text0 font-medium">
           {language === 'en' ? 'Lunar gravity cycles and solar transit alignment calculations.' : 'சூரிய-சந்திர ஈர்ப்பு மற்றும் சஞ்சார கணிப்புகள்.'}
         </p>
       </CardHeader>
@@ -40,9 +40,9 @@ export default function CelestialGuide({ plan, language }: CelestialGuideProps) 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           
           {/* Tithi Card */}
-          <div className="bg-zinc-950/30 border border-white/5 rounded-2xl p-4 flex items-center justify-between gap-4">
+          <div className="bg-brand-bg/30 border border-black/5 rounded-2xl p-4 flex items-center justify-between gap-4">
             <div>
-              <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">
+              <p className="text-[10px] font-bold text-brand-text0 uppercase tracking-wider mb-1">
                 {language === 'en' ? 'Lunar Tithi (Phase)' : 'தற்போதைய திதி'}
               </p>
               <p className="text-base font-extrabold text-zinc-255">{currentWeek.tithi}</p>
@@ -54,7 +54,7 @@ export default function CelestialGuide({ plan, language }: CelestialGuideProps) 
             </div>
             
             {/* Glowing Moon Phase SVG */}
-            <div className="relative w-14 h-14 bg-zinc-900 rounded-full border border-white/5 flex items-center justify-center shrink-0 shadow-inner">
+            <div className="relative w-14 h-14 bg-white rounded-full border border-black/5 flex items-center justify-center shrink-0 shadow-inner">
               <div className="absolute inset-0.5 rounded-full bg-gradient-to-tr from-amber-500/20 to-transparent blur-xs" />
               {/* Custom styled Crescent Moon */}
               <svg className="w-8 h-8 text-amber-300 drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]" viewBox="0 0 24 24" fill="currentColor">
@@ -64,9 +64,9 @@ export default function CelestialGuide({ plan, language }: CelestialGuideProps) 
           </div>
           
           {/* Nakshatra Card */}
-          <div className="bg-zinc-950/30 border border-white/5 rounded-2xl p-4 flex items-center justify-between gap-4">
+          <div className="bg-brand-bg/30 border border-black/5 rounded-2xl p-4 flex items-center justify-between gap-4">
             <div>
-              <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">
+              <p className="text-[10px] font-bold text-brand-text0 uppercase tracking-wider mb-1">
                 {language === 'en' ? 'Lunisolar Nakshatra' : 'நட்சத்திர மண்டலம்'}
               </p>
               <p className="text-base font-extrabold text-zinc-255">{currentWeek.nakshatra}</p>
@@ -77,7 +77,7 @@ export default function CelestialGuide({ plan, language }: CelestialGuideProps) 
             </div>
             
             {/* Compass / Star representation */}
-            <div className="w-14 h-14 bg-zinc-900 rounded-full border border-white/5 flex items-center justify-center shrink-0 shadow-inner">
+            <div className="w-14 h-14 bg-white rounded-full border border-black/5 flex items-center justify-center shrink-0 shadow-inner">
               <svg className="w-7 h-7 text-emerald-400 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
               </svg>
@@ -85,7 +85,7 @@ export default function CelestialGuide({ plan, language }: CelestialGuideProps) 
           </div>
           
           {/* Solar Transit details */}
-          <div className="bg-zinc-950/30 border border-white/5 rounded-2xl p-4 md:col-span-2 flex gap-3 items-start">
+          <div className="bg-brand-bg/30 border border-black/5 rounded-2xl p-4 md:col-span-2 flex gap-3 items-start">
             <div className="p-2 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl shrink-0">
               <Sun size={20} />
             </div>
@@ -93,7 +93,7 @@ export default function CelestialGuide({ plan, language }: CelestialGuideProps) 
               <h4 className="text-xs font-black uppercase text-amber-400 tracking-wider mb-1">
                 {language === 'en' ? 'Solar Transit (Rasi Alignment)' : 'சூரிய சஞ்சாரம் (ராசி)'}
               </h4>
-              <p className="text-xs text-zinc-400 leading-relaxed font-medium">
+              <p className="text-xs text-gray-600 leading-relaxed font-medium">
                 {language === 'en' 
                   ? 'The sun is currently transiting through a favorable agricultural house. This alignment maximizes daytime energy absorption and correlates historically with optimal photosynthesis rates.' 
                   : 'பண்டைய சூர்ய சித்தாந்த கணக்கீடுகளின்படி தற்போதைய சூரிய சஞ்சாரம் இலைகளின் பச்சைய உற்பத்திக்கும், ஒளிச்சேர்க்கைக்கும் மிகவும் சாதகமானதாக அமைந்துள்ளது.'}
@@ -120,7 +120,7 @@ export default function CelestialGuide({ plan, language }: CelestialGuideProps) 
                 exit={{ height: 0, opacity: 0 }}
                 className="overflow-hidden"
               >
-                <div className="mt-3 p-4 bg-zinc-950/50 rounded-2xl border border-white/5 text-xs text-zinc-400 space-y-2.5 leading-relaxed font-medium">
+                <div className="mt-3 p-4 bg-brand-bg/50 rounded-2xl border border-black/5 text-xs text-gray-600 space-y-2.5 leading-relaxed font-medium">
                   <div className="flex gap-2">
                     <Droplets size={14} className="text-blue-400 shrink-0 mt-0.5" />
                     <p>
@@ -131,7 +131,7 @@ export default function CelestialGuide({ plan, language }: CelestialGuideProps) 
                     </p>
                   </div>
                   <div className="flex gap-2">
-                    <Info size={14} className="text-zinc-500 shrink-0 mt-0.5" />
+                    <Info size={14} className="text-brand-text0 shrink-0 mt-0.5" />
                     <p>
                       <strong>{language === 'en' ? 'Waning Moon (Krishna Paksha)' : 'தேய்பிறை (கிருஷ்ண பட்சம்)'}:</strong>{' '}
                       {language === 'en' 
